@@ -137,6 +137,27 @@ header, main, footer {
     z-index: 1;
 }
 
+
+        /* Fuchs auf der Kante zwischen Hauptbereich und Footer */
+.footer-fox {
+    position: absolute;
+    bottom: 60px;  /* Höhe des Footers - passt den Fuchs auf die Kante */
+    right: 5%;     /* Position von rechts */
+    width: 120px;  /* Größe des Fuchses */
+    height: auto;
+    z-index: 10;   /* Über dem Footer */
+    pointer-events: none;
+}
+
+/* Für kleinere Bildschirme */
+@media (max-width: 768px) {
+    .footer-fox {
+        width: 80px;
+        bottom: 50px;
+        right: 3%;
+    }
+}
+
         
         /* ===========================
            HERO SECTION
@@ -450,6 +471,13 @@ header, main, footer {
         .success-message.show {
             display: block;
         }
+
+    </main>
+    
+    <!-- Fuchs auf der Kante -->
+    <img src="Fuchs.png" alt="" class="footer-fox">
+    
+    <footer>
         
         /* ===========================
            FOOTER
