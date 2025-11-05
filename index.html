@@ -66,6 +66,8 @@
             /* Shadows */
             --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.15);
             --shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.2);
+
+            
         }
         
         html {
@@ -87,6 +89,54 @@
             margin: 0 auto;
             padding: 0 var(--space-xl);
         }
+
+/* Scrollende Porträts */
+.portrait-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0; /* Hinter den Content-Karten */
+    overflow: hidden;
+}
+
+.portrait {
+    position: absolute;
+    opacity: 0.15;
+    filter: grayscale(100%);
+    transition: transform 0.3s ease-out;
+    width: 200px;
+    height: auto;
+}
+
+.portrait-left {
+    left: 5%;
+}
+
+.portrait-right {
+    right: 5%;
+}
+
+.portrait-1 {
+    top: 20%;
+}
+
+.portrait-2 {
+    top: 60%;
+}
+
+.portrait-3 {
+    top: 40%;
+}
+
+/* Content muss über den Porträts liegen */
+header, main, footer {
+    position: relative;
+    z-index: 1;
+}
+
         
         /* ===========================
            HERO SECTION
@@ -476,6 +526,12 @@
     </style>
 </head>
 <body>
+    <!-- Scrollende Porträts im Hintergrund -->
+<div class="portrait-container">
+    <img src="Goethe.png" alt="" class="portrait portrait-left portrait-1" aria-hidden="true">
+    <img src="Schiller.png" alt="" class="portrait portrait-left portrait-2" aria-hidden="true">
+    <img src="Lwittgenstein.png" alt="" class="portrait portrait-right portrait-3" aria-hidden="true">
+</div>
     <!-- Hero Section -->
     <header class="hero">
         <div class="container">
@@ -664,5 +720,18 @@
             });
         });
     </script>
+    <script>
+// Parallax-Scroll-Effekt für Porträts
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const portraits = document.querySelectorAll('.portrait');
+    
+    portraits.forEach((portrait, index) => {
+        const speed = (index + 1) * 0.15; // Unterschiedliche Geschwindigkeiten
+        const yPos = scrolled * speed;
+        portrait.style.transform = `translateY(${yPos}px)`;
+    });
+});
+</script>
 </body>
 </html>
