@@ -529,6 +529,12 @@ header, main, footer {
             }
         }
 
+/* Footer Wrapper für Fuchs-Positionierung */
+.footer-wrapper {
+    position: relative;
+    margin-top: var(--space-4xl);
+}
+
 /* Fuchs auf der Kante */
 .footer-fox {
     position: absolute;
@@ -752,15 +758,15 @@ window.addEventListener('scroll', function() {
 });
 </script>
 
-    <!-- Fuchs auf der Kante -->
-    <img src="Fuchs.png" alt="" class="footer-fox">
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Disce – Sprachcoaching für Erwachsene</p>
-        </div>
-    </footer>
-
+       <!-- Footer mit Fuchs -->
+    <div class="footer-wrapper">
+        <img src="Fuchs.png" alt="" class="footer-fox">
+        
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2025 Disce – Sprachcoaching für Erwachsene</p>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
