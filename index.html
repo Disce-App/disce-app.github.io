@@ -22,7 +22,7 @@
         }
         
         :root {
-            /* Colors */
+            /* Colors - Angepasst für grünen Hintergrund */
             --color-primary: #4FAC4E;
             --color-primary-dark: #357435;
             --color-primary-light: #E8F3EA;
@@ -32,12 +32,16 @@
             --color-link: #0352A4;
             --color-link-hover: #1EAFF4;
             --color-error: #801818;
-            --color-bg: #F4F3F3;
+            --color-bg: #4FAC4E; /* Haupthintergrund: Disce-Grün */
+            --color-bg-secondary: #357435; /* Dunkleres Grün für Akzente */
             --color-white: #FFFFFF;
+            --color-cream: #F4F3F3; /* Gedecktes Weiß für Karten */
             --color-text: #101012;
             --color-text-secondary: #3A3A3C;
             --color-text-muted: #857B7B;
+            --color-text-on-green: #FFFFFF; /* Text auf grünem Hintergrund */
             --color-border: #C9AB8D;
+            --color-border-light: rgba(255, 255, 255, 0.3);
             
             /* Typography */
             --font-heading: 'Noto Serif', serif;
@@ -60,8 +64,8 @@
             --radius-lg: 12px;
             
             /* Shadows */
-            --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.15);
+            --shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.2);
         }
         
         html {
@@ -104,23 +108,24 @@
             width: 120px;
             height: 90px;
             margin-bottom: var(--space-sm);
-            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
         }
         
         .brand-name {
             font-family: var(--font-heading);
             font-size: 48px;
             font-weight: 700;
-            color: var(--color-text);
+            color: var(--color-white);
             margin: 0;
             letter-spacing: 0.02em;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
         
         .pronunciation {
             font-family: var(--font-phonetic);
             font-size: 16px;
             font-weight: 500;
-            color: var(--color-text-muted);
+            color: var(--color-primary-light);
             margin: 0;
         }
         
@@ -128,7 +133,7 @@
             font-family: var(--font-heading);
             font-size: 24px;
             font-weight: 600;
-            color: var(--color-text);
+            color: var(--color-white);
             margin: var(--space-sm) 0 0;
         }
         
@@ -142,29 +147,31 @@
             font-family: var(--font-body);
             font-size: 16px;
             font-weight: 600;
-            color: var(--color-primary-dark);
+            color: var(--color-white);
             background-color: transparent;
-            border: 2px solid var(--color-primary-dark);
+            border: 2px solid var(--color-white);
             border-radius: var(--radius-sm);
             text-decoration: none;
             cursor: pointer;
-            transition: background-color 140ms ease-out, color 140ms ease-out;
+            transition: background-color 140ms ease-out, color 140ms ease-out, border-color 140ms ease-out;
         }
         
         .btn-outline:hover {
-            background-color: var(--color-primary-light);
+            background-color: var(--color-white);
+            color: var(--color-primary);
+            border-color: var(--color-white);
         }
         
         .btn-outline:focus-visible {
-            outline: 2px solid var(--color-link-hover);
-            outline-offset: 2px;
+            outline: 2px solid var(--color-white);
+            outline-offset: 4px;
         }
         
         /* ===========================
            CARD COMPONENT
            =========================== */
         .card {
-            background: var(--color-white);
+            background: var(--color-cream);
             border-radius: var(--radius-lg);
             padding: var(--space-2xl);
             box-shadow: var(--shadow-card);
@@ -191,9 +198,10 @@
         .divider {
             height: 4px;
             width: 80px;
-            background-color: var(--color-primary);
+            background-color: var(--color-white);
             margin: var(--space-3xl) auto;
             border-radius: 2px;
+            opacity: 0.8;
         }
         
         /* ===========================
@@ -314,7 +322,7 @@
             border-color: var(--color-primary);
             border-width: 2px;
             padding: calc(var(--space-md) - 1px) calc(14px - 1px);
-            box-shadow: 0 0 0 2px var(--color-primary-light);
+            box-shadow: 0 0 0 3px var(--color-primary-light);
         }
         
         .form-group textarea {
@@ -365,7 +373,7 @@
         }
         
         .btn-primary:focus-visible {
-            outline: 2px solid var(--color-link-hover);
+            outline: 2px solid var(--color-primary-dark);
             outline-offset: 2px;
         }
         
@@ -381,7 +389,7 @@
             display: none;
             margin-top: var(--space-xl);
             padding: var(--space-lg);
-            background-color: var(--color-primary);
+            background-color: var(--color-primary-dark);
             color: var(--color-white);
             border-radius: var(--radius-lg);
             text-align: center;
@@ -397,25 +405,25 @@
            FOOTER
            =========================== */
         .footer {
-            background-color: var(--color-bg);
+            background-color: var(--color-bg-secondary);
             padding: var(--space-xl) 0;
             text-align: center;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
         }
         
         .footer p {
             font-size: 14px;
-            color: var(--color-text-muted);
+            color: var(--color-primary-light);
         }
         
         .footer a {
-            color: var(--color-link);
+            color: var(--color-white);
             text-decoration: none;
             transition: color 120ms ease-out;
         }
         
         .footer a:hover {
-            color: var(--color-link-hover);
+            color: var(--color-primary-light);
             text-decoration: underline;
         }
         
@@ -453,7 +461,7 @@
            ACCESSIBILITY
            =========================== */
         *:focus-visible {
-            outline: 2px solid var(--color-link-hover);
+            outline: 2px solid var(--color-accent-deep-blue);
             outline-offset: 2px;
         }
         
@@ -472,10 +480,10 @@
     <header class="hero">
         <div class="container">
             <div class="logo-section">
-                <!-- Antler Icon (SVG) -->
+                <!-- Antler Icon (SVG) - Weiß für grünen Hintergrund -->
                 <svg class="antler-icon" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M70,120 Q70,100 60,80 Q55,65 45,55 Q40,50 35,48 M70,120 Q70,90 55,70 Q50,62 42,58 M70,120 Q70,80 50,60 Q45,55 38,52 M130,120 Q130,100 140,80 Q145,65 155,55 Q160,50 165,48 M130,120 Q130,90 145,70 Q150,62 158,58 M130,120 Q130,80 150,60 Q155,55 162,52" 
-                          stroke="#101012" 
+                          stroke="#FFFFFF" 
                           stroke-width="12" 
                           fill="none" 
                           stroke-linecap="round" 
