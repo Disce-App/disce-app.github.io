@@ -323,10 +323,13 @@ header, main, footer {
            HERO SECTION
            =========================== */
         .hero {
-            background-color: var(--color-bg);
-            padding: var(--space-4xl) 0;
-            text-align: center;
-        }
+    background-color: var(--color-bg);
+    min-height: 100vh; /* Volle Bildschirmhöhe */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4xl) 0;
+}
         
         .logo-section {
             display: flex;
