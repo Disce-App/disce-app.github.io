@@ -157,9 +157,10 @@ header, main, footer {
     display: flex;
     gap: var(--space-2xl);
     align-items: flex-start;
-    justify-content: center;
-    max-width: 1200px;
+    justify-content: flex-end; /* GEÄNDERT: Nach rechts ausrichten */
+    max-width: 1400px; /* GEÄNDERT: Breiter gemacht */
     margin: 0 auto;
+    margin-right: 8%; /* NEU: Zusätzlicher Abstand rechts */
     padding: 0 var(--space-xl);
 }
 
@@ -172,269 +173,36 @@ header, main, footer {
     max-width: 600px;
 }
 
-.synonym-card h3 {
-    font-family: 'Noto Serif', serif;
-    font-size: 1.75rem;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
-    text-align: center;
-}
-
-.search-box {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-#synonymInput {
-    flex: 1;
-    padding: 0.875rem 1.25rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: 'Inter', sans-serif;
-    transition: all 0.3s ease;
-}
-
-#synonymInput:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px var(--color-primary-light);
-}
-
-#synonymButton {
-    padding: 0.875rem 2rem;
-    background: var(--color-primary);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-family: 'Noto Sans', sans-serif;
-    font-weight: 500;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-
-#synonymButton:hover {
-    background: var(--color-primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(79, 172, 78, 0.3);
-}
-
-#synonymButton:active {
-    transform: translateY(0);
-}
-
-/* Loading Indicator */
-.loading-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1.5rem;
-    background: var(--color-primary-light);
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    animation: fadeIn 0.3s ease;
-}
-
-.spinner {
-    width: 24px;
-    height: 24px;
-    border: 3px solid #e0e0e0;
-    border-top-color: var(--color-primary);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-/* Results Box */
-.results-box {
-    background: var(--color-primary-light);
-    border-radius: 12px;
-    padding: 1.5rem;
-    animation: fadeIn 0.5s ease;
-}
-
-.results-box h4 {
-    font-family: 'Noto Serif', serif;
-    font-size: 1.25rem;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-}
-
-.results-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-.synonym-tag {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: white;
-    border: 2px solid var(--color-primary);
-    border-radius: 20px;
-    color: #2c3e50;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    cursor: default;
-}
-
-.synonym-tag:hover {
-    background: var(--color-primary);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(79, 172, 78, 0.2);
-}
-
-/* Error Message */
-.error-message {
-    background: #fff3cd;
-    border: 2px solid #ffc107;
-    border-radius: 8px;
-    padding: 1rem;
-    color: #856404;
-    text-align: center;
-    animation: fadeIn 0.3s ease;
-}
-
-/* Substack schwebt rechts */
+/* Substack schwebt rechts UND bleibt beim Scrollen stehen */
 .substack-floating {
     flex: 0 0 340px;
     width: 340px;
+    position: sticky; /* NEU: Sticky Position */
+    top: 20px; /* NEU: Abstand vom oberen Rand */
+    align-self: flex-start; /* NEU: Wichtig für sticky */
+    max-height: calc(100vh - 40px); /* NEU: Maximale Höhe */
+    overflow-y: auto; /* NEU: Scrollbar falls Inhalt zu lang */
     opacity: 0;
     animation: fadeIn 0.6s ease-out forwards;
     animation-delay: 0.3s;
 }
 
-/* Newsletter Signup Compact */
-.newsletter-signup {
-    background: var(--color-cream);
-    border-radius: var(--radius-lg);
-    padding: var(--space-lg);
-    margin-bottom: var(--space-lg);
-    box-shadow: var(--shadow-card);
+/* Scrollbar Styling für Substack Section */
+.substack-floating::-webkit-scrollbar {
+    width: 8px;
 }
 
-.newsletter-signup h4 {
-    font-family: var(--font-heading);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: var(--space-xs);
+.substack-floating::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-.newsletter-signup p {
-    font-size: 14px;
-    color: var(--color-text-secondary);
-    margin-bottom: var(--space-md);
+.substack-floating::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 4px;
 }
 
-/* Substack Posts Preview */
-.substack-posts {
-    background: var(--color-cream);
-    border-radius: var(--radius-lg);
-    padding: var(--space-lg);
-    box-shadow: var(--shadow-card);
-}
-
-.substack-posts h4 {
-    font-family: var(--font-heading);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: var(--space-md);
-}
-
-/* Styling für Substack Feed Items */
-#substack-feed-embed {
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-#substack-feed-embed article {
-    padding: var(--space-md);
-    border-bottom: 1px solid var(--color-border-light);
-    transition: background 120ms ease;
-}
-
-#substack-feed-embed article:hover {
-    background: rgba(79, 172, 78, 0.05);
-}
-
-#substack-feed-embed article:last-child {
-    border-bottom: none;
-}
-
-#substack-feed-embed h3 {
-    font-family: var(--font-heading);
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: var(--space-xs);
-}
-
-#substack-feed-embed p {
-    font-size: 14px;
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-    margin-bottom: var(--space-xs);
-}
-
-#substack-feed-embed small {
-    font-size: 12px;
-    color: var(--color-text-muted);
-}
-
-#substack-feed-embed a {
-    color: var(--color-text);
-    text-decoration: none;
-}
-
-#substack-feed-embed a:hover {
-    color: var(--color-primary);
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    .synonym-substack-wrapper {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .synonym-card {
-        width: 100%;
-        max-width: 600px;
-    }
-    
-    .substack-floating {
-        width: 100%;
-        max-width: 600px;
-    }
-}
-
-@media (max-width: 768px) {
-    .synonym-search {
-        padding: 2rem 0 1.5rem;
-    }
-    
-    .synonym-card {
-        padding: 1.5rem;
-    }
-    
-    .search-box {
-        flex-direction: column;
-    }
-    
-    #synonymButton {
-        width: 100%;
-    }
+.substack-floating::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
 }
 
         
