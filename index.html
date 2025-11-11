@@ -1446,42 +1446,46 @@ header, main, footer {
     </script>
 
 <script>
-// Modal Funktionalität
-const aboutModal = document.getElementById('aboutModal');
-const aboutCard = document.querySelector('.info-card[href="#uber-uns"]');
-const closeBtn = document.querySelector('.modal-close');
+document.addEventListener('DOMContentLoaded', function() {
+    // Modal Funktionalität
+    const aboutModal = document.getElementById('aboutModal');
+    const aboutCard = document.querySelector('.info-card[href="#uber-uns"]');
+    const closeBtn = document.querySelector('.modal-close');
 
-// Öffne Modal beim Klick auf "Über uns"
-if (aboutCard) {
-    aboutCard.addEventListener('click', function(e) {
-        e.preventDefault();
-        aboutModal.classList.add('show');
-        document.body.style.overflow = 'hidden'; // Verhindert Scrollen im Hintergrund
-    });
-}
-
-// Schließe Modal beim Klick auf X
-if (closeBtn) {
-    closeBtn.addEventListener('click', function() {
-        aboutModal.classList.remove('show');
-        document.body.style.overflow = ''; // Aktiviert Scrollen wieder
-    });
-}
-
-// Schließe Modal beim Klick außerhalb
-aboutModal.addEventListener('click', function(e) {
-    if (e.target === aboutModal) {
-        aboutModal.classList.remove('show');
-        document.body.style.overflow = '';
+    // Öffne Modal beim Klick auf "Über uns"
+    if (aboutCard) {
+        aboutCard.addEventListener('click', function(e) {
+            e.preventDefault();
+            aboutModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
     }
-});
 
-// Schließe Modal mit ESC-Taste
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && aboutModal.classList.contains('show')) {
-        aboutModal.classList.remove('show');
-        document.body.style.overflow = '';
+    // Schließe Modal beim Klick auf X
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            aboutModal.classList.remove('show');
+            document.body.style.overflow = '';
+        });
     }
+
+    // Schließe Modal beim Klick außerhalb
+    if (aboutModal) {
+        aboutModal.addEventListener('click', function(e) {
+            if (e.target === aboutModal) {
+                aboutModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // Schließe Modal mit ESC-Taste
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && aboutModal && aboutModal.classList.contains('show')) {
+            aboutModal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    });
 });
 </script>
 
