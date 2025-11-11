@@ -500,20 +500,35 @@ header, main, footer {
             line-height: 1.5;
         }
 
-      /* ===========================
+    /* ===========================
    INFO CARDS SECTION
    =========================== */
 .info-cards {
     padding: var(--space-xl) 0 var(--space-2xl);
     position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+}
+
+.info-cards-wrapper {
+    display: flex;
+    gap: var(--space-2xl);
+    align-items: flex-start;
+    justify-content: center;
+}
+
+/* Linker Bereich für Info-Cards */
+.info-cards-main {
+    flex: 0 0 600px;
+    max-width: 600px;
 }
 
 /* Substack schwebt rechts */
 .substack-floating {
-    float: right;
+    flex: 0 0 340px;
     width: 340px;
-    margin-left: var(--space-xl);
-    margin-bottom: var(--space-xl);
     opacity: 0;
     animation: fadeIn 0.6s ease-out forwards;
     animation-delay: 0.3s;
@@ -558,7 +573,6 @@ header, main, footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-xl);
-    max-width: 600px;
 }
 
 .info-card {
@@ -613,15 +627,19 @@ header, main, footer {
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-    .substack-floating {
-        float: none;
-        width: 100%;
-        margin-left: 0;
-        margin-bottom: var(--space-2xl);
+    .info-cards-wrapper {
+        flex-direction: column;
+        align-items: center;
     }
     
-    .cards-grid {
-        max-width: 100%;
+    .info-cards-main {
+        width: 100%;
+        max-width: 600px;
+    }
+    
+    .substack-floating {
+        width: 100%;
+        max-width: 600px;
     }
 }
 
@@ -639,7 +657,7 @@ header, main, footer {
     .info-card-icon {
         font-size: 40px;
     }
-}     
+}
        
         /* ===========================
            CONTACT SECTION
@@ -1010,34 +1028,35 @@ header, main, footer {
 
 <!-- INFO CARDS SECTION -->
 <section class="info-cards">
-  <div class="container">
-    <!-- Substack Embed - schwebt rechts -->
+  <div class="info-cards-wrapper">
+    <!-- Linker Bereich mit Info-Cards -->
+    <div class="info-cards-main">
+      <div class="cards-grid">
+        <a href="#uber-uns" class="info-card">
+          <div class="info-card-content">
+            <div class="info-card-icon">ℹ️</div>
+            <h3>Über uns</h3>
+          </div>
+        </a>
+        
+        <a href="#mission" class="info-card">
+          <div class="info-card-content">
+            <div class="info-card-icon">🎯</div>
+            <h3>Unsere Mission</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Rechter Bereich: Substack + Bjarne -->
     <div class="substack-floating">
       <iframe src="https://disce.substack.com/embed" width="100%" height="320" style="border:1px solid #EEE; background:white; border-radius:12px;" frameborder="0" scrolling="no"></iframe>
       
-      <!-- Bjarne Box unter Substack -->
       <div class="bjarne-box">
         <div class="bjarne-icon">🦌</div>
         <h4>Bjarne Dudzus</h4>
         <p>Ich bin Gründerin von Disce, einer gemeützigen EdTech-Plattform für kreative Deutschlernige. Seit 2017 unterrichte ich Deutsch in Sprachseminaren, Buchvorstellungen und Community-Trees. Leidenschaft für Sprache, Wörter und Menschen.</p>
       </div>
-    </div>
-    
-    <!-- Zwei Info-Cards -->
-    <div class="cards-grid">
-      <a href="#uber-uns" class="info-card">
-        <div class="info-card-content">
-          <div class="info-card-icon">ℹ️</div>
-          <h3>Über uns</h3>
-        </div>
-      </a>
-      
-      <a href="#mission" class="info-card">
-        <div class="info-card-content">
-          <div class="info-card-icon">🎯</div>
-          <h3>Unsere Mission</h3>
-        </div>
-      </a>
     </div>
   </div>
 </section>
