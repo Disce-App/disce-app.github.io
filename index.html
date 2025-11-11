@@ -256,7 +256,7 @@ header, main, footer {
 }
 
 /* ===========================
-   LAYOUT MIT STICKY SIDEBAR
+   LAYOUT MIT FLEXBOX SIDEBAR
    =========================== */
 .content-with-sidebar {
     position: relative;
@@ -265,23 +265,44 @@ header, main, footer {
     padding: 0 var(--space-xl);
 }
 
-/* Sticky Substack Sidebar rechts */
+.synonym-section-wrapper {
+    display: flex;
+    gap: var(--space-3xl);
+    align-items: flex-start;
+    padding: 3rem 0 2rem;
+}
+
+/* Synonym-Suche (links) */
+.synonym-search {
+    flex: 1;
+    max-width: 600px;
+}
+
+.synonym-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(92, 184, 92, 0.1);
+}
+
+.synonym-card h3 {
+    font-size: 24px;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+/* Substack Sidebar (rechts, wird sticky) */
 .substack-sidebar {
+    position: relative;
+    width: 340px;
+    flex-shrink: 0;
+    transition: all 0.3s ease-out;
+}
+
+.substack-sidebar.is-sticky {
     position: fixed;
     top: 100px;
     right: calc((100vw - 1400px) / 2 + var(--space-xl));
-    width: 340px;
-    max-height: calc(100vh - 120px);
-    overflow-y: auto;
-    z-index: 100;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.6s ease-out;
-}
-
-.substack-sidebar.visible {
-    opacity: 1;
-    pointer-events: auto;
 }
 
 .substack-sidebar::-webkit-scrollbar {
@@ -291,34 +312,6 @@ header, main, footer {
 .substack-sidebar::-webkit-scrollbar-thumb {
     background: rgba(92, 184, 92, 0.3);
     border-radius: 4px;
-}
-
-/* Main Content Area - mit Platz für Sidebar */
-.main-content {
-    margin-right: 380px; /* 340px Sidebar + 40px Gap */
-}
-
-/* ===========================
-   SYNONYM-SUCHE
-   =========================== */
-.synonym-search {
-    padding: 3rem 0 2rem;
-    background: var(--color-bg);
-}
-
-.synonym-card {
-    background: white;
-    border-radius: 16px;
-    padding: 2.5rem;
-    box-shadow: 0 4px 20px rgba(92, 184, 92, 0.1);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.synonym-card h3 {
-    font-size: 24px;
-    margin-bottom: 0.5rem;
-    color: var(--color-text);
 }
 
 /* Search Box */
@@ -790,22 +783,26 @@ header, main, footer {
    RESPONSIVE
    =========================== */
 @media (max-width: 1200px) {
+    .synonym-section-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .synonym-search {
+        max-width: 100%;
+    }
+    
     .substack-sidebar {
-        position: relative;
-        top: 0;
-        right: 0;
+        position: relative !important;
         width: 100%;
         max-width: 600px;
-        margin: var(--space-2xl) auto;
-        max-height: none;
+        margin: var(--space-2xl) auto 0;
+        top: auto !important;
+        right: auto !important;
     }
     
-    .substack-sidebar.visible {
-        opacity: 1;
-    }
-    
-    .main-content {
-        margin-right: 0;
+    .substack-sidebar.is-sticky {
+        position: relative !important;
     }
 }
 
@@ -898,28 +895,14 @@ header, main, footer {
         </div>
     </header>
 
-    <!-- Sticky Substack Sidebar (rechts) -->
-    <aside class="substack-sidebar" id="substackSidebar">
-        <!-- Newsletter Signup -->
-        <div class="newsletter-signup">
-            <h4>📬 Newsletter</h4>
-            <p>Bleib auf dem Laufenden</p>
-            <iframe src="https://disce.substack.com/embed" width="100%" height="150" style="border:1px solid #EEE; background:white; border-radius:12px;" frameborder="0" scrolling="no"></iframe>
-        </div>
-        
-        <!-- Substack Posts Preview -->
-        <div class="substack-posts">
-            <h4>📝 Neueste Artikel</h4>
-            <div id="substack-feed-embed"></div>
-        </div>
-    </aside>
-
-    <!-- Main Content mit Platz für Sidebar -->
+    <!-- Main Content -->
     <div class="content-with-sidebar">
-        <div class="main-content">
+        
+        <!-- Synonym-Suche + Substack nebeneinander -->
+        <div class="synonym-section-wrapper">
             
-            <!-- Synonym-Suche (zentriert) -->
-            <section class="synonym-search" id="synonymSearch">
+            <!-- Synonym-Suche (links) -->
+            <div class="synonym-search" id="synonymSearch">
                 <div class="synonym-card">
                     <h3>🔍 Synonym-Finder</h3>
                     <p style="margin-bottom: 1.5rem; color: #666;">Finde passende Alternativen für dein Wort</p>
@@ -953,129 +936,146 @@ header, main, footer {
                         Keine Synonyme gefunden. Versuche ein anderes Wort.
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Divider -->
-            <div class="divider"></div>
-
-            <!-- Introduction Section -->
-            <section class="intro">
-                <div class="container">
-                    <div class="card">
-                        <h2>Präzise sprechen. Register beherrschen.</h2>
-                        <p class="intro-text">
-                            Disce hilft dir, auf B2–C2-Niveau souverän, situationsgerecht und mit dem richtigen Ton zu sprechen und zu schreiben. Ob akademisch, beruflich oder im Alltag – du lernst, was du meinst präzise auszudrücken.
-                        </p>
-                        
-                        <div class="features">
-                            <div class="feature">
-                                <div class="feature-icon" aria-hidden="true">✍️</div>
-                                <div class="feature-content">
-                                    <h3>Schreiben</h3>
-                                    <p>Coaching für Register, Ton und Kohäsion</p>
-                                </div>
-                            </div>
-                            
-                            <div class="feature">
-                                <div class="feature-icon" aria-hidden="true">🗣️</div>
-                                <div class="feature-content">
-                                    <h3>Sprechen</h3>
-                                    <p>Prosodie, Aussprache, Situationskarten</p>
-                                </div>
-                            </div>
-                            
-                            <div class="feature">
-                                <div class="feature-icon" aria-hidden="true">🛠️</div>
-                                <div class="feature-content">
-                                    <h3>Werkzeugkiste</h3>
-                                    <p>Idiome, Konnektoren, Registerleiter</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Substack Sidebar (rechts) -->
+            <aside class="substack-sidebar" id="substackSidebar">
+                <!-- Newsletter Signup -->
+                <div class="newsletter-signup">
+                    <h4>📬 Newsletter</h4>
+                    <p>Bleib auf dem Laufenden</p>
+                    <iframe src="https://disce.substack.com/embed" width="100%" height="150" style="border:1px solid #EEE; background:white; border-radius:12px;" frameborder="0" scrolling="no"></iframe>
                 </div>
-            </section>
-
-            <!-- INFO CARDS SECTION -->
-            <section class="info-cards">
-                <div class="container">
-                    <div class="cards-grid">
-                        <a href="#uber-uns" class="info-card">
-                            <div class="info-card-content">
-                                <div class="info-card-icon">ℹ️</div>
-                                <h3>Über uns</h3>
-                            </div>
-                        </a>
-                        
-                        <a href="#mission" class="info-card">
-                            <div class="info-card-content">
-                                <div class="info-card-icon">🎯</div>
-                                <h3>Unsere Mission</h3>
-                            </div>
-                        </a>
-                    </div>
+                
+                <!-- Substack Posts Preview -->
+                <div class="substack-posts">
+                    <h4>📝 Neueste Artikel</h4>
+                    <div id="substack-feed-embed"></div>
                 </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact" class="contact">
-                <div class="container">
-                    <div class="card">
-                        <h3>Interesse? Schreib mir.</h3>
-                        
-                        <form id="contactForm" action="https://formsubmit.co/bjarne.dudzus@student.businessschool-berlin.de" method="POST">
-                            <!-- FormSubmit Configuration -->
-                            <input type="hidden" name="_subject" value="Neue Nachricht von Disce Website">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_next" value="https://disce-app.github.io/#success">
-                            
-                            <div class="form-group">
-                                <label for="name">Dein Name</label>
-                                <input 
-                                    type="text" 
-                                    id="name" 
-                                    name="name" 
-                                    placeholder="Dein Name" 
-                                    required 
-                                    aria-required="true">
-                                <div class="form-error">Bitte gib deinen Namen ein.</div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">Deine E-Mail</label>
-                                <input 
-                                    type="email" 
-                                    id="email" 
-                                    name="email" 
-                                    placeholder="Deine E-Mail" 
-                                    required 
-                                    aria-required="true">
-                                <div class="form-error">Bitte gib eine gültige E-Mail-Adresse ein.</div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message">Nachricht</label>
-                                <textarea 
-                                    id="message" 
-                                    name="message" 
-                                    rows="4" 
-                                    placeholder="Was möchtest du wissen oder erreichen?" 
-                                    required 
-                                    aria-required="true"></textarea>
-                                <div class="form-error">Bitte schreibe eine Nachricht.</div>
-                            </div>
-                            
-                            <button type="submit" class="btn-primary">Nachricht senden</button>
-                        </form>
-                        
-                        <div id="successMessage" class="success-message">
-                            ✓ Danke! Ich melde mich bald.
-                        </div>
-                    </div>
-                </div>
-            </section>
+            </aside>
             
         </div>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+        <!-- Introduction Section -->
+        <section class="intro">
+            <div class="container">
+                <div class="card">
+                    <h2>Präzise sprechen. Register beherrschen.</h2>
+                    <p class="intro-text">
+                        Disce hilft dir, auf B2–C2-Niveau souverän, situationsgerecht und mit dem richtigen Ton zu sprechen und zu schreiben. Ob akademisch, beruflich oder im Alltag – du lernst, was du meinst präzise auszudrücken.
+                    </p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon" aria-hidden="true">✍️</div>
+                            <div class="feature-content">
+                                <h3>Schreiben</h3>
+                                <p>Coaching für Register, Ton und Kohäsion</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon" aria-hidden="true">🗣️</div>
+                            <div class="feature-content">
+                                <h3>Sprechen</h3>
+                                <p>Prosodie, Aussprache, Situationskarten</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon" aria-hidden="true">🛠️</div>
+                            <div class="feature-content">
+                                <h3>Werkzeugkiste</h3>
+                                <p>Idiome, Konnektoren, Registerleiter</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFO CARDS SECTION -->
+        <section class="info-cards">
+            <div class="container">
+                <div class="cards-grid">
+                    <a href="#uber-uns" class="info-card">
+                        <div class="info-card-content">
+                            <div class="info-card-icon">ℹ️</div>
+                            <h3>Über uns</h3>
+                        </div>
+                    </a>
+                    
+                    <a href="#mission" class="info-card">
+                        <div class="info-card-content">
+                            <div class="info-card-icon">🎯</div>
+                            <h3>Unsere Mission</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="card">
+                    <h3>Interesse? Schreib mir.</h3>
+                    
+                    <form id="contactForm" action="https://formsubmit.co/bjarne.dudzus@student.businessschool-berlin.de" method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_subject" value="Neue Nachricht von Disce Website">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://disce-app.github.io/#success">
+                        
+                        <div class="form-group">
+                            <label for="name">Dein Name</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="Dein Name" 
+                                required 
+                                aria-required="true">
+                            <div class="form-error">Bitte gib deinen Namen ein.</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Deine E-Mail</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="Deine E-Mail" 
+                                required 
+                                aria-required="true">
+                            <div class="form-error">Bitte gib eine gültige E-Mail-Adresse ein.</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Nachricht</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="4" 
+                                placeholder="Was möchtest du wissen oder erreichen?" 
+                                required 
+                                aria-required="true"></textarea>
+                            <div class="form-error">Bitte schreibe eine Nachricht.</div>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Nachricht senden</button>
+                    </form>
+                    
+                    <div id="successMessage" class="success-message">
+                        ✓ Danke! Ich melde mich bald.
+                    </div>
+                </div>
+            </div>
+        </section>
+        
     </div>
 
     <!-- Footer mit Fuchs -->
@@ -1093,24 +1093,28 @@ header, main, footer {
 
     <!-- JavaScript -->
     <script>
-        // Substack Sidebar erscheint erst bei Synonym-Suche
+        // Sticky Sidebar Funktionalität
         document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('substackSidebar');
             const synonymSection = document.getElementById('synonymSearch');
-            const substackSidebar = document.getElementById('substackSidebar');
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        substackSidebar.classList.add('visible');
+            if (!sidebar || !synonymSection) return;
+            
+            // Speichere ursprüngliche Position
+            const sidebarOriginalOffset = sidebar.offsetTop;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Wenn wir über die ursprüngliche Position scrollen, wird es sticky
+                if (window.innerWidth > 1200) { // Nur auf Desktop
+                    if (scrollTop >= sidebarOriginalOffset - 100) {
+                        sidebar.classList.add('is-sticky');
                     } else {
-                        substackSidebar.classList.remove('visible');
+                        sidebar.classList.remove('is-sticky');
                     }
-                });
-            }, {
-                threshold: 0.1
+                }
             });
-            
-            observer.observe(synonymSection);
         });
     </script>
     
