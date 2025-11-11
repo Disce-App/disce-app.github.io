@@ -1447,12 +1447,11 @@ header, main, footer {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Modal Funktionalität
+    // Über Uns Modal
     const aboutModal = document.getElementById('aboutModal');
     const aboutCard = document.querySelector('.info-card[href="#uber-uns"]');
-    const closeBtn = document.querySelector('.modal-close');
+    const aboutCloseBtn = aboutModal?.querySelector('.modal-close');
 
-    // Öffne Modal beim Klick auf "Über uns"
     if (aboutCard) {
         aboutCard.addEventListener('click', function(e) {
             e.preventDefault();
@@ -1461,15 +1460,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Schließe Modal beim Klick auf X
-    if (closeBtn) {
-        closeBtn.addEventListener('click', function() {
+    if (aboutCloseBtn) {
+        aboutCloseBtn.addEventListener('click', function() {
             aboutModal.classList.remove('show');
             document.body.style.overflow = '';
         });
     }
 
-    // Schließe Modal beim Klick außerhalb
     if (aboutModal) {
         aboutModal.addEventListener('click', function(e) {
             if (e.target === aboutModal) {
@@ -1479,15 +1476,51 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Schließe Modal mit ESC-Taste
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && aboutModal && aboutModal.classList.contains('show')) {
-            aboutModal.classList.remove('show');
+    // Unsere Mission Modal
+    const missionModal = document.getElementById('missionModal');
+    const missionCard = document.querySelector('.info-card[href="#mission"]');
+    const missionCloseBtn = missionModal?.querySelector('.modal-close');
+
+    if (missionCard) {
+        missionCard.addEventListener('click', function(e) {
+            e.preventDefault();
+            missionModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    if (missionCloseBtn) {
+        missionCloseBtn.addEventListener('click', function() {
+            missionModal.classList.remove('show');
             document.body.style.overflow = '';
+        });
+    }
+
+    if (missionModal) {
+        missionModal.addEventListener('click', function(e) {
+            if (e.target === missionModal) {
+                missionModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // ESC-Taste schließt beide Modals
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (aboutModal?.classList.contains('show')) {
+                aboutModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+            if (missionModal?.classList.contains('show')) {
+                missionModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
         }
     });
 });
 </script>
+
 
 
 <!-- Über Uns Modal -->
@@ -1501,6 +1534,19 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </div>
+
+<!-- Unsere Mission Modal -->
+<div id="missionModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h2>Unsere Mission</h2>
+        <div class="team-intro">
+            <p>Hier kommt die Mission...</p>
+            <p>Beschreibung der Vision und Ziele von Disce.</p>
+        </div>
+    </div>
+</div>
+
     
 </body>
 </html>
