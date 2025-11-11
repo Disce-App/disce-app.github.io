@@ -500,18 +500,65 @@ header, main, footer {
             line-height: 1.5;
         }
 
-       /* ===========================
+      /* ===========================
    INFO CARDS SECTION
    =========================== */
 .info-cards {
     padding: var(--space-xl) 0 var(--space-2xl);
+    position: relative;
 }
 
+/* Substack schwebt rechts */
+.substack-floating {
+    float: right;
+    width: 340px;
+    margin-left: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.substack-floating iframe {
+    width: 100%;
+    margin-bottom: var(--space-lg);
+}
+
+/* Bjarne Box unter Substack */
+.bjarne-box {
+    background: var(--color-cream);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-card);
+    text-align: center;
+}
+
+.bjarne-icon {
+    font-size: 48px;
+    margin-bottom: var(--space-sm);
+}
+
+.bjarne-box h4 {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-sm);
+}
+
+.bjarne-box p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* Zwei Info-Cards nebeneinander */
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-xl);
-    align-items: start;
+    max-width: 600px;
 }
 
 .info-card {
@@ -531,14 +578,10 @@ header, main, footer {
 }
 
 .info-card:nth-child(1) {
-    animation-delay: 0.3s;
-}
-
-.info-card:nth-child(2) {
     animation-delay: 0.4s;
 }
 
-.info-card:nth-child(4) {
+.info-card:nth-child(2) {
     animation-delay: 0.5s;
 }
 
@@ -568,28 +611,20 @@ header, main, footer {
     margin: 0;
 }
 
-/* Substack Embed */
-.substack-embed {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 180px;
-    opacity: 0;
-    animation: fadeIn 0.6s ease-out forwards;
-    animation-delay: 0.45s;
-}
-
-/* RESPONSIVE BREAKPOINTS */
-
-/* Tablet: 2 Spalten */
+/* RESPONSIVE */
 @media (max-width: 1024px) {
+    .substack-floating {
+        float: none;
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: var(--space-2xl);
+    }
+    
     .cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-lg);
+        max-width: 100%;
     }
 }
 
-/* Mobile: 1 Spalte */
 @media (max-width: 640px) {
     .cards-grid {
         grid-template-columns: 1fr;
@@ -604,12 +639,7 @@ header, main, footer {
     .info-card-icon {
         font-size: 40px;
     }
-    
-    .substack-embed iframe {
-        height: 280px;
-    }
-}
-         
+}     
        
         /* ===========================
            CONTACT SECTION
@@ -981,8 +1011,20 @@ header, main, footer {
 <!-- INFO CARDS SECTION -->
 <section class="info-cards">
   <div class="container">
+    <!-- Substack Embed - schwebt rechts -->
+    <div class="substack-floating">
+      <iframe src="https://disce.substack.com/embed" width="100%" height="320" style="border:1px solid #EEE; background:white; border-radius:12px;" frameborder="0" scrolling="no"></iframe>
+      
+      <!-- Bjarne Box unter Substack -->
+      <div class="bjarne-box">
+        <div class="bjarne-icon">🦌</div>
+        <h4>Bjarne Dudzus</h4>
+        <p>Ich bin Gründerin von Disce, einer gemeützigen EdTech-Plattform für kreative Deutschlernige. Seit 2017 unterrichte ich Deutsch in Sprachseminaren, Buchvorstellungen und Community-Trees. Leidenschaft für Sprache, Wörter und Menschen.</p>
+      </div>
+    </div>
+    
+    <!-- Zwei Info-Cards -->
     <div class="cards-grid">
-      <!-- Erste Kachel -->
       <a href="#uber-uns" class="info-card">
         <div class="info-card-content">
           <div class="info-card-icon">ℹ️</div>
@@ -990,29 +1032,16 @@ header, main, footer {
         </div>
       </a>
       
-      <!-- Zweite Kachel -->
       <a href="#mission" class="info-card">
         <div class="info-card-content">
           <div class="info-card-icon">🎯</div>
           <h3>Unsere Mission</h3>
         </div>
       </a>
-      
-      <!-- Substack Embed -->
-      <div class="substack-embed">
-        <iframe src="https://disce.substack.com/embed" width="100%" height="320" style="border:1px solid #EEE; background:white; border-radius:12px;" frameborder="0" scrolling="no"></iframe>
-      </div>
-      
-      <!-- Dritte Kachel -->
-      <a href="#sozialien" class="info-card">
-        <div class="info-card-content">
-          <div class="info-card-icon">🤝</div>
-          <h3>Unsere Sozialien</h3>
-        </div>
-      </a>
     </div>
   </div>
 </section>
+
 
     
         <!-- Substack Embed -->
