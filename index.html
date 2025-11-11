@@ -146,50 +146,52 @@ header, main, footer {
         
 /* ===========================
    SYNONYM-SUCHE + SUBSTACK NEBENEINANDER
+   NEUES LAYOUT
    =========================== */
 
 .synonym-search {
     padding: 3rem 0 2rem;
     background: var(--color-bg);
+    position: relative; /* NEU */
 }
 
 .synonym-substack-wrapper {
-    display: flex;
-    gap: var(--space-2xl);
-    align-items: flex-start;
-    justify-content: flex-end; /* GEÄNDERT: Nach rechts ausrichten */
-    max-width: 1400px; /* GEÄNDERT: Breiter gemacht */
+    max-width: 1200px;
     margin: 0 auto;
-    margin-right: 8%; /* NEU: Zusätzlicher Abstand rechts */
     padding: 0 var(--space-xl);
+    display: grid; /* GEÄNDERT: Grid statt Flex */
+    grid-template-columns: 1fr 340px; /* Hauptinhalt + Sidebar */
+    gap: var(--space-2xl);
+    align-items: start;
 }
 
+/* Hauptinhalt (Synonym-Finder bleibt zentriert) */
 .synonym-card {
     background: white;
     border-radius: 16px;
     padding: 2.5rem;
     box-shadow: 0 4px 20px rgba(92, 184, 92, 0.1);
-    flex: 0 0 600px;
-    max-width: 600px;
+    width: 100%;
+    max-width: 700px; /* Begrenzte Breite für Lesbarkeit */
+    justify-self: center; /* Zentriert in der Grid-Spalte */
 }
 
-/* Substack schwebt rechts UND bleibt beim Scrollen stehen */
+/* Substack schwebt WIRKLICH rechts und bleibt stehen */
 .substack-floating {
-    flex: 0 0 340px;
     width: 340px;
-    position: sticky; /* NEU: Sticky Position */
-    top: 20px; /* NEU: Abstand vom oberen Rand */
-    align-self: flex-start; /* NEU: Wichtig für sticky */
-    max-height: calc(100vh - 40px); /* NEU: Maximale Höhe */
-    overflow-y: auto; /* NEU: Scrollbar falls Inhalt zu lang */
+    position: sticky;
+    top: 100px; /* Abstand vom oberen Rand beim Scrollen */
+    align-self: start;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
     opacity: 0;
     animation: fadeIn 0.6s ease-out forwards;
     animation-delay: 0.3s;
 }
 
-/* Scrollbar Styling für Substack Section */
+/* Scrollbar Styling */
 .substack-floating::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 .substack-floating::-webkit-scrollbar-track {
@@ -197,12 +199,33 @@ header, main, footer {
 }
 
 .substack-floating::-webkit-scrollbar-thumb {
-    background: var(--color-border);
+    background: rgba(92, 184, 92, 0.3);
     border-radius: 4px;
 }
 
 .substack-floating::-webkit-scrollbar-thumb:hover {
-    background: var(--color-text-muted);
+    background: rgba(92, 184, 92, 0.5);
+}
+
+/* Responsive: Auf kleinen Bildschirmen untereinander */
+@media (max-width: 1024px) {
+    .synonym-substack-wrapper {
+        grid-template-columns: 1fr; /* Nur eine Spalte */
+        gap: var(--space-xl);
+    }
+    
+    .substack-floating {
+        position: relative; /* Nicht mehr sticky */
+        top: 0;
+        width: 100%;
+        max-width: 700px;
+        justify-self: center;
+        max-height: none;
+    }
+    
+    .synonym-card {
+        max-width: 100%;
+    }
 }
 
         
