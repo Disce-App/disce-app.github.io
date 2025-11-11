@@ -265,43 +265,28 @@ header, main, footer {
     padding: 0 var(--space-xl);
 }
 
+/* ZENTRIERTES GRID: 1fr | 600px | 340px | 1fr */
 .synonym-section-wrapper {
-    display: flex;
-    gap: var(--space-3xl);
-    align-items: flex-start;
-    padding: 3rem 0 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 600px 340px minmax(0, 1fr);
+  gap: var(--space-3xl);
+  align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 0 2rem;
 }
 
-/* Synonym-Suche (links) */
+/* Synonym-Suche sitzt exakt in der 600px-Mittelspalte */
 .synonym-search {
-    flex: 1;
-    max-width: 600px;
-    width: 100%;
+  grid-column: 2;
+  width: 100%;
 }
 
-.synonym-card {
-    background: white;
-    border-radius: 16px;
-    padding: 2.5rem;
-    box-shadow: 0 4px 20px rgba(92, 184, 92, 0.1);
-}
-
-.synonym-card h3 {
-    font-size: 24px;
-    margin-bottom: 0.5rem;
-    color: var(--color-text);
-}
-
-/* Substack Sidebar (rechts, wird sticky mit scroll) */
+/* Sidebar in der rechten 340px-Spalte (Sticky-Klasse bleibt wie sie ist) */
 .substack-sidebar {
-    position: relative;
-    width: 340px;
-    flex-shrink: 0;
-    transition: all 0.3s ease-out;
-    max-height: none;
-    overflow-y: visible;
+  grid-column: 3;
+  width: 340px;
+  position: relative;
 }
 
 .substack-sidebar.is-sticky {
@@ -328,6 +313,19 @@ header, main, footer {
 
 .substack-sidebar::-webkit-scrollbar-thumb:hover {
     background: rgba(92, 184, 92, 0.5);
+}
+
+    .synonym-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(92, 184, 92, 0.1);
+}
+
+.synonym-card h3 {
+    font-size: 24px;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
 }
 
 /* Search Box */
