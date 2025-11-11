@@ -267,36 +267,25 @@ header, main, footer {
 
 /* ZENTRIERTES GRID: 1fr | 600px | 340px | 1fr */
 .synonym-section-wrapper {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 600px 340px minmax(0, 1fr);
-  gap: var(--space-3xl);
-  align-items: start;
-  max-width: 1400px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 3rem 0 2rem;
+  padding: 3rem var(--space-xl) 2rem;
 }
 
-/* Synonym-Suche sitzt exakt in der 600px-Mittelspalte */
 .synonym-search {
-  grid-column: 2;
   width: 100%;
 }
 
-/* Sidebar in der rechten 340px-Spalte (Sticky-Klasse bleibt wie sie ist) */
 .substack-sidebar {
-  grid-column: 3;
+  position: fixed;
+  top: 100px;
+  right: max(var(--space-xl), calc((100vw - 1400px) / 2 + var(--space-xl)));
   width: 340px;
-  position: relative;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding-right: 8px;
 }
 
-.substack-sidebar.is-sticky {
-    position: fixed;
-    top: 100px;
-    right: calc((100vw - 1400px) / 2 + var(--space-xl));
-    max-height: calc(100vh - 120px);
-    overflow-y: auto;
-    padding-right: 8px;
-}
 
 .substack-sidebar::-webkit-scrollbar {
     width: 6px;
