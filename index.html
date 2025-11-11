@@ -275,8 +275,13 @@ header, main, footer {
     overflow-y: auto;
     z-index: 100;
     opacity: 0;
-    animation: fadeIn 0.6s ease-out forwards;
-    animation-delay: 0.3s;
+    pointer-events: none;
+    transition: opacity 0.6s ease-out;
+}
+
+.substack-sidebar.visible {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .substack-sidebar::-webkit-scrollbar {
@@ -795,6 +800,10 @@ header, main, footer {
         max-height: none;
     }
     
+    .substack-sidebar.visible {
+        opacity: 1;
+    }
+    
     .main-content {
         margin-right: 0;
     }
@@ -890,7 +899,7 @@ header, main, footer {
     </header>
 
     <!-- Sticky Substack Sidebar (rechts) -->
-    <aside class="substack-sidebar">
+    <aside class="substack-sidebar" id="substackSidebar">
         <!-- Newsletter Signup -->
         <div class="newsletter-signup">
             <h4>📬 Newsletter</h4>
@@ -910,7 +919,7 @@ header, main, footer {
         <div class="main-content">
             
             <!-- Synonym-Suche (zentriert) -->
-            <section class="synonym-search">
+            <section class="synonym-search" id="synonymSearch">
                 <div class="synonym-card">
                     <h3>🔍 Synonym-Finder</h3>
                     <p style="margin-bottom: 1.5rem; color: #666;">Finde passende Alternativen für dein Wort</p>
@@ -1083,6 +1092,28 @@ header, main, footer {
     </div>
 
     <!-- JavaScript -->
+    <script>
+        // Substack Sidebar erscheint erst bei Synonym-Suche
+        document.addEventListener('DOMContentLoaded', function() {
+            const synonymSection = document.getElementById('synonymSearch');
+            const substackSidebar = document.getElementById('substackSidebar');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        substackSidebar.classList.add('visible');
+                    } else {
+                        substackSidebar.classList.remove('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            observer.observe(synonymSection);
+        });
+    </script>
+    
     <script>
         // Form Validation and Handling
         document.addEventListener('DOMContentLoaded', function() {
