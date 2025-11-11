@@ -143,7 +143,7 @@ header, main, footer {
     position: relative;
     z-index: 1;
 }
-
+        
 /* ===========================
    SYNONYM-SUCHE
    =========================== */
@@ -500,74 +500,117 @@ header, main, footer {
             line-height: 1.5;
         }
 
-                
-        /* ===========================
-           INFO CARDS SECTION
-           =========================== */
-        .info-cards {
-            padding: var(--space-xl) 0 var(--space-2xl);
-        }
-        
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-xl);
-        }
-        
-        .info-card {
-            background: var(--color-cream);
-            border-radius: var(--radius-lg);
-            padding: var(--space-2xl);
-            box-shadow: var(--shadow-card);
-            text-decoration: none;
-            transition: transform 140ms ease-out, box-shadow 140ms ease-out;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 180px;
-            opacity: 0;
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-        
-        .info-card:nth-child(1) {
-            animation-delay: 0.3s;
-        }
-        
-        .info-card:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-        
-        .info-card:nth-child(3) {
-            animation-delay: 0.5s;
-        }
-        
-        .info-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .info-card:active {
-            transform: translateY(-2px);
-        }
-        
-        .info-card-content {
-            text-align: center;
-        }
-        
-        .info-card-icon {
-            font-size: 48px;
-            margin-bottom: var(--space-md);
-        }
-        
-        .info-card h3 {
-            font-family: var(--font-heading);
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--color-text);
-            margin: 0;
-        }
-        
+       /* ===========================
+   INFO CARDS SECTION
+   =========================== */
+.info-cards {
+    padding: var(--space-xl) 0 var(--space-2xl);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+.info-card {
+    background: var(--color-cream);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-card);
+    text-decoration: none;
+    transition: transform 140ms ease-out, box-shadow 140ms ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.info-card:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.info-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.info-card:nth-child(4) {
+    animation-delay: 0.5s;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.info-card:active {
+    transform: translateY(-2px);
+}
+
+.info-card-content {
+    text-align: center;
+}
+
+.info-card-icon {
+    font-size: 48px;
+    margin-bottom: var(--space-md);
+}
+
+.info-card h3 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+}
+
+/* Substack Embed */
+.substack-embed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+    animation-delay: 0.45s;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Tablet: 2 Spalten */
+@media (max-width: 1024px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-lg);
+    }
+}
+
+/* Mobile: 1 Spalte */
+@media (max-width: 640px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+    
+    .info-card {
+        min-height: 140px;
+        padding: var(--space-xl);
+    }
+    
+    .info-card-icon {
+        font-size: 40px;
+    }
+    
+    .substack-embed iframe {
+        height: 280px;
+    }
+}
+         
+       
         /* ===========================
            CONTACT SECTION
            =========================== */
@@ -935,31 +978,57 @@ header, main, footer {
         </div>
     </section>
 
-    <section class="info-cards">
-    <div class="container">
-        <div class="cards-grid">
-            <a href="#uber-uns" class="info-card">
-                <div class="info-card-content">
-                    <div class="info-card-icon">ℹ️</div>
-                    <h3>Über uns</h3>
-                </div>
-            </a>
-            
-            <a href="#mission" class="info-card">
-                <div class="info-card-content">
-                    <div class="info-card-icon">🎯</div>
-                    <h3>Unsere Mission</h3>
-                </div>
-            </a>
-            
-            <a href="#sozialien" class="info-card">
-                <div class="info-card-content">
-                    <div class="info-card-icon">🤝</div>
-                    <h3>Unsere Sozialien</h3>
-                </div>
-            </a>
+<!-- INFO CARDS SECTION -->
+<section class="info-cards">
+  <div class="container">
+    <div class="cards-grid">
+      <!-- Erste Kachel -->
+      <a href="#uber-uns" class="info-card">
+        <div class="info-card-content">
+          <div class="info-card-icon">ℹ️</div>
+          <h3>Über uns</h3>
         </div>
+      </a>
+      
+      <!-- Zweite Kachel -->
+      <a href="#mission" class="info-card">
+        <div class="info-card-content">
+          <div class="info-card-icon">🎯</div>
+          <h3>Unsere Mission</h3>
+        </div>
+      </a>
+      
+      <!-- Substack Embed -->
+      <div class="substack-embed">
+        <iframe src="https://disce.substack.com/embed" width="100%" height="320" style="border:1px solid #EEE; background:white; border-radius:12px;" frameborder="0" scrolling="no"></iframe>
+      </div>
+      
+      <!-- Dritte Kachel -->
+      <a href="#sozialien" class="info-card">
+        <div class="info-card-content">
+          <div class="info-card-icon">🤝</div>
+          <h3>Unsere Sozialien</h3>
+        </div>
+      </a>
     </div>
+  </div>
+</section>
+
+    
+        <!-- Substack Embed -->
+        <div style="flex:1; min-width:260px; max-width:340px;">
+          <iframe src="https://disce.substack.com/embed" width="100%" height="320" style="border:1px solid #EEE; background:white; border-radius:12px;" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </div>
+      <!-- Dritte Kachel -->
+      <a href="#sozialien" class="info-card" style="flex:1; min-width:220px;">
+        <div class="info-card-content">
+          <div class="info-card-icon">🤝</div>
+          <h3>Unsere Sozialien</h3>
+        </div>
+      </a>
+    </div>
+  </div>
 </section>
 
     <!-- Contact Section -->
@@ -1087,15 +1156,24 @@ header, main, footer {
     </script>
     <script>
 // Parallax-Scroll-Effekt für Porträts
+let ticking = false;
+
 window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const portraits = document.querySelectorAll('.portrait');
-    
-    portraits.forEach((portrait, index) => {
-        const speed = (index + 1) * 0.15; // Unterschiedliche Geschwindigkeiten
-        const yPos = scrolled * speed;
-        portrait.style.transform = `translateY(${yPos}px)`;
-    });
+    if (!ticking) {
+        window.requestAnimationFrame(function() {
+            const scrolled = window.pageYOffset;
+            const portraits = document.querySelectorAll('.portrait');
+            
+            portraits.forEach((portrait, index) => {
+                const speed = (index + 1) * 0.15;
+                const yPos = scrolled * speed;
+                portrait.style.transform = `translateY(${yPos}px)`;
+            });
+            
+            ticking = false;
+        });
+        ticking = true;
+    }
 });
 </script>
 
