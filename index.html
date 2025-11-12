@@ -607,6 +607,79 @@ header, main, footer {
     margin: 0;
 }
 
+
+/* ===========================
+   BETA TESTING SECTION
+=========================== */
+.beta-section {
+    padding: var(--space-3xl) 0 var(--space-4xl);
+}
+
+.beta-card {
+    display: block;
+    max-width: 400px;
+    margin: 0 auto;
+    background: var(--color-cream);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3xl) var(--space-2xl);
+    box-shadow: var(--shadow-card);
+    text-decoration: none;
+    transition: transform 140ms ease-out, box-shadow 140ms ease-out;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.6s forwards;
+}
+
+.beta-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.beta-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.beta-icon {
+    width: 120px;
+    height: auto;
+    transition: transform 180ms ease-out;
+}
+
+.beta-card:hover .beta-icon {
+    transform: scale(1.05);
+}
+
+.beta-card h3 {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.beta-card p {
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+@media (max-width: 640px) {
+    .beta-section {
+        padding: var(--space-2xl) 0 var(--space-3xl);
+    }
+    
+    .beta-icon {
+        width: 100px;
+    }
+    
+    .beta-card {
+        padding: var(--space-2xl) var(--space-xl);
+    }
+}
+
 /* ===========================
    CONTACT SECTION
    =========================== */
@@ -1193,8 +1266,19 @@ header, main, footer {
                 </div>
             </div>
         </section>
-        
     </div>
+
+    <section class="beta-section">
+    <div class="container">
+        <a href="beta.html" class="beta-card">
+            <div class="beta-card-content">
+                <img src="BetaTesting.png" alt="Beta Testing" class="beta-icon">
+                <h3>Beta Testing & Prototypen</h3>
+                <p>Teste unsere neuesten Features</p>
+            </div>
+        </a>
+    </div>
+</section>
 
     <!-- Footer mit Fuchs -->
     <div class="footer-wrapper">
