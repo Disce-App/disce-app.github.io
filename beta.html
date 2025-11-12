@@ -1,1 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beta Testing & Prototypen – Disce</title>
+    <style>
+        /* ===========================
+           DESIGN TOKENS
+           =========================== */
+        :root {
+            --color-cream: #FEF9F3;
+            --color-sage: #8B9A7E;
+            --color-rust: #C17B5A;
+            --color-charcoal: #2C2C2C;
+            --color-text: #1A1A1A;
+            --color-text-secondary: #4A4A4A;
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --space-xs: 8px;
+            --space-sm: 12px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-2xl: 48px;
+            --space-3xl: 64px;
+            --space-4xl: 96px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --shadow-card: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.12);
+        }
 
+        /* ===========================
+           RESET & BASE
+           =========================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background: var(--color-cream);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+        }
+
+        /* ===========================
+           HEADER
+           =========================== */
+        .header {
+            background: white;
+            padding: var(--space-xl) 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            background: var(--color-sage);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 140ms ease-out;
+        }
+
+        .back-button:hover {
+            background: #7A8A6E;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        /* ===========================
+           MAIN CONTENT
+           =========================== */
+        .main-content {
+            padding: var(--space-3xl) 0;
+            min-height: 60vh;
+        }
+
+        .intro-text {
+            max-width: 700px;
+            margin: 0 auto var(--space-3xl);
+            text-align: center;
+        }
+
+        .intro-text p {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+
+        .prototype-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-2xl);
+        }
+
+        .prototype-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-card);
+            transition: transform 140ms ease-out, box-shadow 140ms ease-out;
+        }
+
+        .prototype-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .prototype-card h3 {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            margin-bottom: var(--space-md);
+            color: var(--color-text);
+        }
+
+        .prototype-card p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-lg);
+        }
+
+        .prototype-link {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-lg);
+            background: var(--color-rust);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            transition: background 140ms ease-out;
+        }
+
+        .prototype-link:hover {
+            background: #B06A4A;
+        }
+
+        /* ===========================
+           FOOTER
+           =========================== */
+        .footer {
+            background: var(--color-charcoal);
+            color: white;
+            padding: var(--space-xl) 0;
+            margin-top: var(--space-4xl);
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* ===========================
+           RESPONSIVE
+           =========================== */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .intro-text p {
+                font-size: 16px;
+            }
+
+            .prototype-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="back-button">← Zurück</a>
+                <h1>Beta Testing & Prototypen</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="intro-text">
+                <p>Hier findest du unsere neuesten Features und Prototypen. Teste sie aus und gib uns Feedback!</p>
+            </div>
+
+            <!-- Prototype Grid -->
+            <div class="prototype-grid">
+                <!-- Beispiel-Card – diese können Sie später ersetzen -->
+                <div class="prototype-card">
+                    <h3>Prototyp 1</h3>
+                    <p>Beschreibung des ersten Prototyps oder Features.</p>
+                    <a href="#" class="prototype-link">Testen →</a>
+                </div>
+
+                <div class="prototype-card">
+                    <h3>Prototyp 2</h3>
+                    <p>Beschreibung des zweiten Prototyps oder Features.</p>
+                    <a href="#" class="prototype-link">Testen →</a>
+                </div>
+
+                <!-- Weitere Prototypen hier hinzufügen -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Disce. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
