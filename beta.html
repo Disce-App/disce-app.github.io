@@ -55,6 +55,13 @@
             padding: 0 var(--space-xl);
         }
 
+        /* Breiterer Container für CodePen */
+        .wide-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+        }
+
         /* ===========================
            HEADER
            =========================== */
@@ -236,7 +243,7 @@
             }
 
             .codepen-embed {
-                height: 600px;
+                height: 1000px;
             }
         }
     </style>
@@ -253,36 +260,41 @@
     </header>
 
     <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <div class="intro-text">
-                <p>Hier findest du unsere neuesten Features und Prototypen. Teste sie aus und gib uns Feedback!</p>
-            </div>
-
-            <!-- CodePen Embed Section -->
-            <div class="codepen-section">
-                <div class="codepen-header">
-                    <h3>Interaktiver Prototyp</h3>
-                    <p>Teste unseren neuesten Prototyp direkt hier im Browser.</p>
-                </div>
-                <iframe class="codepen-embed" 
-                        src="https://codepen.io/Disce-App/embed/raeBdjV?default-tab=result" 
-                        loading="lazy" 
-                        allowtransparency="true" 
-                        allowfullscreen="true">
-                </iframe>
-                <a href="https://codepen.io/Disce-App/pen/raeBdjV" 
-                   class="prototype-link" 
-                   target="_blank" 
-                   rel="noopener noreferrer">Vollansicht öffnen →</a>
-            </div>
-
-            <!-- Prototype Grid for future prototypes -->
-            <div class="prototype-grid">
-                <!-- Weitere Prototypen können hier später hinzugefügt werden -->
-            </div>
+<main class="main-content">
+    <div class="container">
+        <div class="intro-text">
+            <p>Hier findest du unsere neuesten Features und Prototypen. Teste sie aus und gib uns Feedback!</p>
         </div>
-    </main>
+    </div>
+    
+    <!-- CodePen Embed Section -->
+    <div class="wide-container">
+        <div class="codepen-section">
+            <div class="codepen-header">
+                <h3>Interaktiver Prototyp</h3>
+                <p>Teste unseren neuesten Prototyp direkt hier im Browser.</p>
+            </div>
+            <iframe class="codepen-embed" 
+                    src="https://codepen.io/Disce-App/embed/raeBdjV?default-tab=result" 
+                    loading="lazy" 
+                    allowtransparency="true" 
+                    allowfullscreen="true">
+            </iframe>
+            <a href="https://codepen.io/Disce-App/pen/raeBdjV" 
+               class="prototype-link" 
+               target="_blank" 
+               rel="noopener noreferrer">Vollansicht öffnen →</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Prototype Grid for future prototypes -->
+        <div class="prototype-grid">
+            <!-- Weitere Prototypen können hier später hinzugefügt werden -->
+        </div>
+    </div>
+</main>
+
 
     <!-- Footer -->
     <footer class="footer">
