@@ -162,6 +162,15 @@
             background: #B06A4A;
         }
 
+        /* CodePen Embed Styles */
+        .codepen-embed {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-md);
+        }
+
         /* ===========================
            FOOTER
            =========================== */
@@ -201,6 +210,10 @@
             .prototype-grid {
                 grid-template-columns: 1fr;
             }
+
+            .codepen-embed {
+                height: 400px;
+            }
         }
     </style>
 </head>
@@ -224,20 +237,21 @@
 
             <!-- Prototype Grid -->
             <div class="prototype-grid">
-                <!-- Beispiel-Card – diese können Sie später ersetzen -->
+                <!-- CodePen Prototype -->
                 <div class="prototype-card">
-                    <h3>Prototyp 1</h3>
-                    <p>Beschreibung des ersten Prototyps oder Features.</p>
-                    <a href="#" class="prototype-link">Testen →</a>
+                    <h3>Interaktiver Prototyp</h3>
+                    <p>Teste unseren neuesten Prototyp direkt hier im Browser.</p>
+                    <iframe class="codepen-embed" 
+                            src="https://codepen.io/Disce-App/embed/raeBdjV?default-tab=result" 
+                            loading="lazy" 
+                            allowtransparency="true" 
+                            allowfullscreen="true">
+                    </iframe>
+                    <a href="https://codepen.io/Disce-App/pen/raeBdjV" 
+                       class="prototype-link" 
+                       target="_blank" 
+                       rel="noopener noreferrer">Vollansicht öffnen →</a>
                 </div>
-
-                <div class="prototype-card">
-                    <h3>Prototyp 2</h3>
-                    <p>Beschreibung des zweiten Prototyps oder Features.</p>
-                    <a href="#" class="prototype-link">Testen →</a>
-                </div>
-
-                <!-- Weitere Prototypen hier hinzufügen -->
             </div>
         </div>
     </main>
