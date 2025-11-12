@@ -163,12 +163,36 @@
         }
 
         /* CodePen Embed Styles */
+        .codepen-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-card);
+            margin-top: var(--space-2xl);
+        }
+
+        .codepen-header {
+            margin-bottom: var(--space-lg);
+        }
+
+        .codepen-header h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            margin-bottom: var(--space-md);
+            color: var(--color-text);
+        }
+
+        .codepen-header p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-lg);
+        }
+
         .codepen-embed {
             width: 100%;
-            height: 500px;
-            border: none;
+            height: 800px;
+            border: 1px solid #e0e0e0;
             border-radius: var(--radius-sm);
-            margin-top: var(--space-md);
+            margin-bottom: var(--space-lg);
         }
 
         /* ===========================
@@ -212,7 +236,7 @@
             }
 
             .codepen-embed {
-                height: 400px;
+                height: 600px;
             }
         }
     </style>
@@ -235,23 +259,27 @@
                 <p>Hier findest du unsere neuesten Features und Prototypen. Teste sie aus und gib uns Feedback!</p>
             </div>
 
-            <!-- Prototype Grid -->
-            <div class="prototype-grid">
-                <!-- CodePen Prototype -->
-                <div class="prototype-card">
+            <!-- CodePen Embed Section -->
+            <div class="codepen-section">
+                <div class="codepen-header">
                     <h3>Interaktiver Prototyp</h3>
                     <p>Teste unseren neuesten Prototyp direkt hier im Browser.</p>
-                    <iframe class="codepen-embed" 
-                            src="https://codepen.io/Disce-App/embed/raeBdjV?default-tab=result" 
-                            loading="lazy" 
-                            allowtransparency="true" 
-                            allowfullscreen="true">
-                    </iframe>
-                    <a href="https://codepen.io/Disce-App/pen/raeBdjV" 
-                       class="prototype-link" 
-                       target="_blank" 
-                       rel="noopener noreferrer">Vollansicht öffnen →</a>
                 </div>
+                <iframe class="codepen-embed" 
+                        src="https://codepen.io/Disce-App/embed/raeBdjV?default-tab=result" 
+                        loading="lazy" 
+                        allowtransparency="true" 
+                        allowfullscreen="true">
+                </iframe>
+                <a href="https://codepen.io/Disce-App/pen/raeBdjV" 
+                   class="prototype-link" 
+                   target="_blank" 
+                   rel="noopener noreferrer">Vollansicht öffnen →</a>
+            </div>
+
+            <!-- Prototype Grid for future prototypes -->
+            <div class="prototype-grid">
+                <!-- Weitere Prototypen können hier später hinzugefügt werden -->
             </div>
         </div>
     </main>
