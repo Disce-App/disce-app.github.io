@@ -1,0 +1,31 @@
+{
+  "updates": [
+    {
+      "id": 1,
+      "date": "2025-11-19",
+      "title": "6 ICPs definiert & priorisiert",
+      "summary": "Wir haben unsere Zielgruppen analysiert: Business (Blue/White-Collar), Academia (Bachelor/Master), Social (Familie/Professionals). Nächster Schritt: Validierung durch Interviews.",
+      "category": "research",
+      "isPublic": true,
+      "link": ""
+    },
+    {
+      "id": 2,
+      "date": "2025-11-15",
+      "title": "CEFR-Benchmark-Konzept entwickelt",
+      "summary": "12-minütiger Mini-Benchmark für alle 4 Skills (Sprechen, Schreiben, Hören, Lesen) mit Register-Analyse.",
+      "category": "product",
+      "isPublic": true,
+      "link": ""
+    },
+    {
+      "id": 3,
+      "date": "2025-11-10",
+      "title": "Interne Recherche zu Registern",
+      "summary": "Detaillierte Analyse zur Registertheorie und Anwendung in der Sprachdidaktik.",
+      "category": "research",
+      "isPublic": false,
+      "link": ""
+    }
+  ]
+}
