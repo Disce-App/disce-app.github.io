@@ -811,6 +811,37 @@ header, main, footer {
     text-align: center;
 }
 
+    .progress-meta {
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-md);
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.progress-list {
+  margin-left: 1.1rem;
+  margin-bottom: var(--space-md);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.progress-list li + li {
+  margin-top: var(--space-sm);
+}
+
+.progress-list strong {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.progress-note {
+  margin-top: var(--space-sm);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+
 
 /* ===========================
    BUTTONS
@@ -1244,11 +1275,43 @@ header, main, footer {
 
         <!-- Projektfortschritt Section -->
 <section class="project-insights">
-    <div class="container">
-        <div class="card insights-card">
-            <h2 data-de="Projektfortschritt/Einsichten" data-en="Project Progress/Insights">Projektfortschritt/Einsichten</h2>
-        </div>
+  <div class="container">
+    <div class="card insights-card">
+      <h2
+        data-de="Projektfortschritt/Einsichten"
+        data-en="Project Progress/Insights"
+      >
+        Projektfortschritt/Einsichten
+      </h2>
+
+      <p class="progress-meta"
+         data-de="Status: Sprint 6 · 0/3 Ziele abgeschlossen · Letztes Update: 3. November 2025"
+         data-en="Status: Sprint 6 · 0/3 goals completed · Last updated: 3 November 2025">
+        Status: Sprint 6 · 0/3 Ziele abgeschlossen · Letztes Update: 3. November 2025
+      </p>
+
+      <ul class="progress-list">
+        <li>
+          <strong>Website:</strong>
+          Lean erste Version ist live (Home und Basisinfos). Messaging, ICP‑Seite und „Problem / Lösung / für wen“ werden im nächsten Sprint geschärft.
+        </li>
+        <li>
+          <strong>Prototyp:</strong>
+          Onboarding ist skizziert, Teile des Progression‑Systems sind prototypiert. Ein durchgängiger, klickbarer MVP‑Flow fehlt noch.
+        </li>
+        <li>
+          <strong>Kostenplan:</strong>
+          Tech‑Stack für das MVP ist definiert und beim technischen Advisor. Szenario‑basierter Kostenplan folgt im nächsten Sprint.
+        </li>
+      </ul>
+
+      <p class="progress-note"
+         data-de="Für ausführlichere Updates und Learnings kannst du unten unseren Newsletter abonnieren."
+         data-en="For more detailed updates and learnings, subscribe to our newsletter below.">
+        Für ausführlichere Updates und Learnings kannst du unten unseren Newsletter abonnieren.
+      </p>
     </div>
+  </div>
 </section>
 
         <!-- Contact Section -->
