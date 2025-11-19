@@ -143,6 +143,19 @@ body {
     overflow: hidden;
 }
 
+    /* DACH-Karte im Hintergrund */
+.dach-map-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;          /* schön groß */
+    max-width: 1100px;    /* aber nicht unendlich */
+    opacity: 0.2;        /* sehr blass */
+    filter: grayscale(100%) contrast(0.9);
+    z-index: 0;           /* unter den Porträts, aber im selben Container */
+}
+
 .portrait {
     position: absolute;
     opacity: 0.15;
@@ -1121,12 +1134,17 @@ header, main, footer {
         <img id="toggleIcon" src="ToggleEnglisch.png" alt="Switch to English">
     </div>
 
-    <!-- Scrollende Porträts im Hintergrund -->
+    <!-- Scrollende Porträts + DACH-Karte im Hintergrund -->
 <div class="portrait-container">
+    <!-- DACH-Karte als großer, blasser Akzent -->
+    <img src="DACH-Map-Blue.png" alt="" class="dach-map-bg" aria-hidden="true">
+
+    <!-- Porträts -->
     <img src="Goethe.png" alt="" class="portrait portrait-left portrait-1" aria-hidden="true">
     <img src="Schiller.png" alt="" class="portrait portrait-left portrait-2" aria-hidden="true">
     <img src="Lwittgenstein.png" alt="" class="portrait portrait-right portrait-3" aria-hidden="true">
-</div>   
+</div>
+
     
     <!-- Hero Section -->
     <header class="hero">
