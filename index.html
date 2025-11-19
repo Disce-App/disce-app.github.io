@@ -791,7 +791,7 @@ header, main, footer {
 }
 
 
-    /* ===========================
+   /* ===========================
    PROJECT INSIGHTS SECTION
    =========================== */
 .project-insights {
@@ -807,40 +807,37 @@ header, main, footer {
     font-size: 24px;
     font-weight: 700;
     color: var(--color-text);
-    margin: 0;
+    margin: 0 0 var(--space-md);
     text-align: center;
 }
 
-    .progress-meta {
-  margin-top: var(--space-md);
-  margin-bottom: var(--space-md);
-  font-size: 14px;
-  color: var(--color-text-muted);
+/* Kurzstatus unter der Überschrift */
+.progress-meta {
+    margin-bottom: var(--space-md);
+    font-size: 14px;
+    color: var(--color-text-muted);
+    text-align: center;
 }
 
+/* Liste der drei Statuspunkte */
 .progress-list {
-  margin-left: 1.1rem;
-  margin-bottom: var(--space-md);
-  font-size: 14px;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
+    margin-left: 1.1rem;
+    margin-bottom: var(--space-md);
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
 }
 
 .progress-list li + li {
-  margin-top: var(--space-sm);
+    margin-top: var(--space-sm);
 }
 
-.progress-list strong {
-  font-weight: 600;
-  color: var(--color-text);
-}
-
+/* Hinweis auf Newsletter */
 .progress-note {
-  margin-top: var(--space-sm);
-  font-size: 13px;
-  color: var(--color-text-muted);
+    margin-top: var(--space-sm);
+    font-size: 13px;
+    color: var(--color-text-muted);
 }
-
 
 
 /* ===========================
@@ -1284,30 +1281,42 @@ header, main, footer {
         Projektfortschritt/Einsichten
       </h2>
 
-      <p class="progress-meta"
-         data-de="Status: Sprint 6 · 0/3 Ziele abgeschlossen · Letztes Update: 3. November 2025"
-         data-en="Status: Sprint 6 · 0/3 goals completed · Last updated: 3 November 2025">
+      <p
+        class="progress-meta"
+        data-de="Status: Sprint 6 · 0/3 Ziele abgeschlossen · Letztes Update: 3. November 2025"
+        data-en="Status: Sprint 6 · 0/3 goals completed · Last updated: 3 November 2025"
+      >
         Status: Sprint 6 · 0/3 Ziele abgeschlossen · Letztes Update: 3. November 2025
       </p>
 
       <ul class="progress-list">
-        <li>
-          <strong>Website:</strong>
-          Lean erste Version ist live (Home und Basisinfos). Messaging, ICP‑Seite und „Problem / Lösung / für wen“ werden im nächsten Sprint geschärft.
+        <li
+          data-de="Website: Erste öffentliche Version ist live (Startseite und Basisinfos). Kernbotschaft, ICP-Seite und die Abschnitte „Problem / Lösung / für wen“ sind entworfen und werden im nächsten Sprint geschärft."
+          data-en="Website: First public version is live (home and basic info). Core messaging, ICP page and the “problem / solution / who it’s for” sections are drafted and will be refined in the next sprint."
+        >
+          Website: Erste öffentliche Version ist live (Startseite und Basisinfos). Kernbotschaft, ICP-Seite und die Abschnitte „Problem / Lösung / für wen“ sind entworfen und werden im nächsten Sprint geschärft.
         </li>
-        <li>
-          <strong>Prototyp:</strong>
-          Onboarding ist skizziert, Teile des Progression‑Systems sind prototypiert. Ein durchgängiger, klickbarer MVP‑Flow fehlt noch.
+
+        <li
+          data-de="Prototyp: Onboarding ist wiregeframed und Teile des Progressionssystems sind prototypisiert. Ein durchgängiger, klickbarer MVP-Flow fehlt noch."
+          data-en="Prototype: Onboarding is wireframed and parts of the progression system are prototyped. A single clickable end-to-end MVP flow is still missing."
+        >
+          Prototyp: Onboarding ist wiregeframed und Teile des Progressionssystems sind prototypisiert. Ein durchgängiger, klickbarer MVP-Flow fehlt noch.
         </li>
-        <li>
-          <strong>Kostenplan:</strong>
-          Tech‑Stack für das MVP ist definiert und beim technischen Advisor. Szenario‑basierter Kostenplan folgt im nächsten Sprint.
+
+        <li
+          data-de="Kostenplan: Erster Tech-Stack für das MVP ist definiert und bei unserem technischen Advisor. Auf dieser Basis entsteht im nächsten Sprint ein szenariobasierter Kostenplan."
+          data-en="Cost plan: First tech stack for the MVP is defined and with our technical advisor. Based on this, a scenario-based cost plan will be created in the next sprint."
+        >
+          Kostenplan: Erster Tech-Stack für das MVP ist definiert und bei unserem technischen Advisor. Auf dieser Basis entsteht im nächsten Sprint ein szenariobasierter Kostenplan.
         </li>
       </ul>
 
-      <p class="progress-note"
-         data-de="Für ausführlichere Updates und Learnings kannst du unten unseren Newsletter abonnieren."
-         data-en="For more detailed updates and learnings, subscribe to our newsletter below.">
+      <p
+        class="progress-note"
+        data-de="Für ausführlichere Updates und Learnings kannst du unten unseren Newsletter abonnieren."
+        data-en="For more detailed updates and learnings, you can subscribe to our newsletter below."
+      >
         Für ausführlichere Updates und Learnings kannst du unten unseren Newsletter abonnieren.
       </p>
     </div>
