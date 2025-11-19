@@ -96,6 +96,41 @@ body {
     padding: 0 var(--space-xl);
 }
 
+/* ===========================
+   LANGUAGE TOGGLE
+   =========================== */
+.language-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 180ms ease-out;
+}
+
+.language-toggle:hover {
+    transform: scale(1.05);
+}
+
+.language-toggle img {
+    width: 60px;
+    height: 60px;
+    display: block;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+}
+
+@media (max-width: 640px) {
+    .language-toggle {
+        top: 15px;
+        right: 15px;
+    }
+    
+    .language-toggle img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
 /* Scrollende Porträts */
 .portrait-container {
     position: fixed;
@@ -1053,6 +1088,11 @@ header, main, footer {
     
 </head>
 <body>
+    <!-- Language Toggle -->
+    <div class="language-toggle" id="languageToggle">
+        <img id="toggleIcon" src="ToggleEnglisch.png" alt="Switch to English">
+    </div>
+
     <!-- Scrollende Porträts im Hintergrund -->
 <div class="portrait-container">
     <img src="Goethe.png" alt="" class="portrait portrait-left portrait-1" aria-hidden="true">
@@ -1068,10 +1108,10 @@ header, main, footer {
                 
                 <h1 class="brand-name">DISCE!</h1>
                 <p class="pronunciation">/ˈdɪs.t͡se/</p>
-                <p class="tagline">Sag, was Du meinst.</p>
+                <p class="tagline" data-de="Sag, was Du meinst." data-en="Say what you mean.">Sag, was Du meinst.</p>
                 
                 <div class="hero-cta">
-                    <a href="#contact" class="btn-outline">Sag uns, was du meinst!</a>
+                    <a href="#contact" class="btn-outline" data-de="Sag uns, was du meinst!" data-en="Tell us what you mean!">Sag uns, was du meinst!</a>
                 </div>
             </div>
         </div>
@@ -1086,17 +1126,19 @@ header, main, footer {
             <!-- Synonym-Suche (links) -->
             <div class="synonym-search" id="synonymSearch">
                 <div class="synonym-card">
-                    <h3>🔍 Synonym-Finder</h3>
-                    <p style="margin-bottom: 1.5rem; color: #666;">Finde passende Alternativen für dein Wort</p>
+                    <h3 data-de="🔍 Synonym-Finder" data-en="🔍 Synonym Finder">🔍 Synonym-Finder</h3>
+                    <p style="margin-bottom: 1.5rem; color: #666;" data-de="Finde passende Alternativen für dein Wort" data-en="Find suitable alternatives for your word">Finde passende Alternativen für dein Wort</p>
                     
                     <div class="search-box">
                         <input 
                             type="text" 
                             id="synonymInput" 
                             placeholder="Wort eingeben..." 
+                            data-placeholder-de="Wort eingeben..."
+                            data-placeholder-en="Enter word..."
                             autocomplete="off"
                         >
-                        <button id="synonymButton" class="btn-primary">
+                        <button id="synonymButton" class="btn-primary" data-de="Suchen" data-en="Search">
                             Suchen
                         </button>
                     </div>
@@ -1104,17 +1146,17 @@ header, main, footer {
                     <!-- Loading Indicator -->
                     <div id="loadingIndicator" class="loading-indicator" style="display: none;">
                         <div class="spinner"></div>
-                        <span>Synonyme werden gesucht...</span>
+                        <span data-de="Synonyme werden gesucht..." data-en="Searching for synonyms...">Synonyme werden gesucht...</span>
                     </div>
                     
                     <!-- Results Box -->
                     <div id="resultsBox" class="results-box" style="display: none;">
-                        <h4>Ergebnisse:</h4>
+                        <h4 data-de="Ergebnisse:" data-en="Results:">Ergebnisse:</h4>
                         <div id="resultsList" class="results-list"></div>
                     </div>
                     
                     <!-- Error Message -->
-                    <div id="errorMessage" class="error-message" style="display: none;">
+                    <div id="errorMessage" class="error-message" style="display: none;" data-de="Keine Synonyme gefunden. Versuche ein anderes Wort." data-en="No synonyms found. Try another word.">
                         Keine Synonyme gefunden. Versuche ein anderes Wort.
                     </div>
                 </div>
@@ -1124,14 +1166,14 @@ header, main, footer {
             <aside class="substack-sidebar" id="substackSidebar">
                 <!-- Newsletter Signup -->
                 <div class="newsletter-signup">
-                    <h4>📬 Newsletter</h4>
-                    <p>Bleib auf dem Laufenden</p>
+                    <h4 data-de="📬 Newsletter" data-en="📬 Newsletter">📬 Newsletter</h4>
+                    <p data-de="Bleib auf dem Laufenden" data-en="Stay up to date">Bleib auf dem Laufenden</p>
                     <iframe src="https://disce.substack.com/embed" width="100%" height="150" style="border:1px solid #EEE; background:white; border-radius:12px;" frameborder="0" scrolling="no"></iframe>
                 </div>
                 
                 <!-- Substack Posts Preview -->
                 <div class="substack-posts">
-                    <h4>📝 Neueste Artikel</h4>
+                    <h4 data-de="📝 Neueste Artikel" data-en="📝 Latest Articles">📝 Neueste Artikel</h4>
                     <div id="substack-feed-embed"></div>
                 </div>
             </aside>
@@ -1145,8 +1187,8 @@ header, main, footer {
         <section class="intro">
             <div class="container">
                 <div class="card">
-                    <h2>Präzise sprechen. Register beherrschen.</h2>
-                    <p class="intro-text">
+                    <h2 data-de="Präzise sprechen. Register beherrschen." data-en="Speak precisely. Master registers.">Präzise sprechen. Register beherrschen.</h2>
+                    <p class="intro-text" data-de="Disce hilft dir, auf B2–C2-Niveau souverän, situationsgerecht und mit dem richtigen Ton zu sprechen und zu schreiben. Ob akademisch, beruflich oder im Alltag – du lernst, was du meinst präzise auszudrücken." data-en="Disce helps you speak and write confidently, appropriately, and with the right tone at B2–C2 level. Whether academic, professional, or everyday – you learn to express precisely what you mean.">
                         Disce hilft dir, auf B2–C2-Niveau souverän, situationsgerecht und mit dem richtigen Ton zu sprechen und zu schreiben. Ob akademisch, beruflich oder im Alltag – du lernst, was du meinst präzise auszudrücken.
                     </p>
                     
@@ -1154,24 +1196,24 @@ header, main, footer {
                         <div class="feature">
                             <div class="feature-icon" aria-hidden="true">✍️</div>
                             <div class="feature-content">
-                                <h3>Schreiben</h3>
-                                <p>Coaching für Register, Ton und Kohäsion</p>
+                                <h3 data-de="Schreiben" data-en="Writing">Schreiben</h3>
+                                <p data-de="Coaching für Register, Ton und Kohäsion" data-en="Coaching for register, tone and cohesion">Coaching für Register, Ton und Kohäsion</p>
                             </div>
                         </div>
                         
                         <div class="feature">
                             <div class="feature-icon" aria-hidden="true">🗣️</div>
                             <div class="feature-content">
-                                <h3>Sprechen</h3>
-                                <p>Prosodie, Aussprache, Situationskarten</p>
+                                <h3 data-de="Sprechen" data-en="Speaking">Sprechen</h3>
+                                <p data-de="Prosodie, Aussprache, Situationskarten" data-en="Prosody, pronunciation, situation cards">Prosodie, Aussprache, Situationskarten</p>
                             </div>
                         </div>
                         
                         <div class="feature">
                             <div class="feature-icon" aria-hidden="true">🛠️</div>
                             <div class="feature-content">
-                                <h3>Werkzeugkiste</h3>
-                                <p>Idiome, Konnektoren, Registerleiter</p>
+                                <h3 data-de="Werkzeugkiste" data-en="Toolkit">Werkzeugkiste</h3>
+                                <p data-de="Idiome, Konnektoren, Registerleiter" data-en="Idioms, connectors, register ladder">Idiome, Konnektoren, Registerleiter</p>
                             </div>
                         </div>
                     </div>
@@ -1186,14 +1228,14 @@ header, main, footer {
                     <a href="#uber-uns" class="info-card">
                         <div class="info-card-content">
                             <div class="info-card-icon">ℹ️</div>
-                            <h3>Über uns</h3>
+                            <h3 data-de="Über uns" data-en="About us">Über uns</h3>
                         </div>
                     </a>
                     
                     <a href="#mission" class="info-card">
                         <div class="info-card-content">
                             <div class="info-card-icon">🎯</div>
-                            <h3>Unsere Mission</h3>
+                            <h3 data-de="Unsere Mission" data-en="Our Mission">Unsere Mission</h3>
                         </div>
                     </a>
                 </div>
@@ -1204,7 +1246,7 @@ header, main, footer {
 <section class="project-insights">
     <div class="container">
         <div class="card insights-card">
-            <h2>Projektfortschritt/Einsichten</h2>
+            <h2 data-de="Projektfortschritt/Einsichten" data-en="Project Progress/Insights">Projektfortschritt/Einsichten</h2>
         </div>
     </div>
 </section>
@@ -1213,7 +1255,7 @@ header, main, footer {
         <section id="contact" class="contact">
             <div class="container">
                 <div class="card">
-                    <h3>Interesse? Schreib mir.</h3>
+                    <h3 data-de="Interesse? Schreib mir." data-en="Interested? Write to me.">Interesse? Schreib mir.</h3>
                     
                     <form id="contactForm" action="https://formsubmit.co/bjarne.dudzus@student.businessschool-berlin.de" method="POST">
                         <!-- FormSubmit Configuration -->
@@ -1222,45 +1264,51 @@ header, main, footer {
                         <input type="hidden" name="_next" value="https://disce-app.github.io/#success">
                         
                         <div class="form-group">
-                            <label for="name">Dein Name</label>
+                            <label for="name" data-de="Dein Name" data-en="Your Name">Dein Name</label>
                             <input 
                                 type="text" 
                                 id="name" 
                                 name="name" 
-                                placeholder="Dein Name" 
+                                placeholder="Dein Name"
+                                data-placeholder-de="Dein Name"
+                                data-placeholder-en="Your Name"
                                 required 
                                 aria-required="true">
-                            <div class="form-error">Bitte gib deinen Namen ein.</div>
+                            <div class="form-error" data-de="Bitte gib deinen Namen ein." data-en="Please enter your name.">Bitte gib deinen Namen ein.</div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Deine E-Mail</label>
+                            <label for="email" data-de="Deine E-Mail" data-en="Your Email">Deine E-Mail</label>
                             <input 
                                 type="email" 
                                 id="email" 
                                 name="email" 
-                                placeholder="Deine E-Mail" 
+                                placeholder="Deine E-Mail"
+                                data-placeholder-de="Deine E-Mail"
+                                data-placeholder-en="Your Email"
                                 required 
                                 aria-required="true">
-                            <div class="form-error">Bitte gib eine gültige E-Mail-Adresse ein.</div>
+                            <div class="form-error" data-de="Bitte gib eine gültige E-Mail-Adresse ein." data-en="Please enter a valid email address.">Bitte gib eine gültige E-Mail-Adresse ein.</div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Nachricht</label>
+                            <label for="message" data-de="Nachricht" data-en="Message">Nachricht</label>
                             <textarea 
                                 id="message" 
                                 name="message" 
                                 rows="4" 
-                                placeholder="Was möchtest du wissen oder erreichen?" 
+                                placeholder="Was möchtest du wissen oder erreichen?"
+                                data-placeholder-de="Was möchtest du wissen oder erreichen?"
+                                data-placeholder-en="What would you like to know or achieve?"
                                 required 
                                 aria-required="true"></textarea>
-                            <div class="form-error">Bitte schreibe eine Nachricht.</div>
+                            <div class="form-error" data-de="Bitte schreibe eine Nachricht." data-en="Please write a message.">Bitte schreibe eine Nachricht.</div>
                         </div>
                         
-                        <button type="submit" class="btn-primary">Nachricht senden</button>
+                        <button type="submit" class="btn-primary" data-de="Nachricht senden" data-en="Send Message">Nachricht senden</button>
                     </form>
                     
-                    <div id="successMessage" class="success-message">
+                    <div id="successMessage" class="success-message" data-de="✓ Danke! Ich melde mich bald." data-en="✓ Thanks! I'll get back to you soon.">
                         ✓ Danke! Ich melde mich bald.
                     </div>
                 </div>
@@ -1273,8 +1321,8 @@ header, main, footer {
         <a href="beta.html" class="beta-card">
             <div class="beta-card-content">
                 <img src="BetaTesting.png" alt="Beta Testing" class="beta-icon">
-                <h3>Beta Testing & Prototypen</h3>
-                <p>Teste unsere neuesten Features</p>
+                <h3 data-de="Beta Testing & Prototypen" data-en="Beta Testing & Prototypes">Beta Testing & Prototypen</h3>
+                <p data-de="Teste unsere neuesten Features" data-en="Test our latest features">Teste unsere neuesten Features</p>
             </div>
         </a>
     </div>
@@ -1288,12 +1336,90 @@ header, main, footer {
         
         <footer class="footer">
             <div class="container">
-                <p>&copy; 2025 Disce – Sprachcoaching für Erwachsene</p>
+                <p data-de="&copy; 2025 Disce – Sprachcoaching für Erwachsene" data-en="&copy; 2025 Disce – Language Coaching for Adults">&copy; 2025 Disce – Sprachcoaching für Erwachsene</p>
             </div>
         </footer>
     </div>
 
     <!-- JavaScript -->
+    <script>
+        // ===========================
+        // LANGUAGE TOGGLE SYSTEM
+        // ===========================
+        (function() {
+            const toggle = document.getElementById('languageToggle');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            // Standard-Sprache
+            let currentLang = localStorage.getItem('language') || 'de';
+            
+            // Translations Object
+            const translations = {
+                de: {
+                    icon: 'ToggleEnglisch.png',
+                    alt: 'Switch to English',
+                    lang: 'de'
+                },
+                en: {
+                    icon: 'ToggleDeutsch.png',
+                    alt: 'Zu Deutsch wechseln',
+                    lang: 'en'
+                }
+            };
+            
+            // Funktion: Sprache wechseln
+            function switchLanguage(lang) {
+                currentLang = lang;
+                localStorage.setItem('language', lang);
+                
+                // Icon aktualisieren
+                toggleIcon.src = translations[lang].icon;
+                toggleIcon.alt = translations[lang].alt;
+                
+                // HTML lang-Attribut aktualisieren
+                document.documentElement.lang = translations[lang].lang;
+                
+                // Alle Elemente mit data-de und data-en durchgehen
+                document.querySelectorAll('[data-de][data-en]').forEach(element => {
+                    const germanText = element.getAttribute('data-de');
+                    const englishText = element.getAttribute('data-en');
+                    
+                    if (lang === 'de') {
+                        // Für innerHTML verwenden wir innerHTML, sonst textContent
+                        if (element.tagName === 'P' && element.classList.contains('footer')?.parentElement) {
+                            element.innerHTML = germanText;
+                        } else {
+                            element.textContent = germanText;
+                        }
+                    } else {
+                        if (element.tagName === 'P' && element.classList.contains('footer')?.parentElement) {
+                            element.innerHTML = englishText;
+                        } else {
+                            element.textContent = englishText;
+                        }
+                    }
+                });
+                
+                // Placeholder für Input-Felder aktualisieren
+                document.querySelectorAll('[data-placeholder-de][data-placeholder-en]').forEach(input => {
+                    const germanPlaceholder = input.getAttribute('data-placeholder-de');
+                    const englishPlaceholder = input.getAttribute('data-placeholder-en');
+                    
+                    input.placeholder = lang === 'de' ? germanPlaceholder : englishPlaceholder;
+                });
+            }
+            
+            // Event Listener für Toggle
+            toggle.addEventListener('click', function() {
+                const newLang = currentLang === 'de' ? 'en' : 'de';
+                switchLanguage(newLang);
+            });
+            
+            // Initial: Gespeicherte Sprache laden
+            switchLanguage(currentLang);
+        })();
+    </script>
+
     <script>
         // Sticky Sidebar Funktionalität
         document.addEventListener('DOMContentLoaded', function() {
@@ -1611,10 +1737,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <div id="aboutModal" class="modal">
     <div class="modal-content">
         <span class="modal-close">&times;</span>
-        <h2>Über uns</h2>
+        <h2 data-de="Über uns" data-en="About us">Über uns</h2>
         <div class="team-intro">
-            <p>Hier kommt die Teamvorstellung...</p>
-            <p>Du kannst hier mehrere Absätze, Bilder oder andere Inhalte einfügen.</p>
+            <p data-de="Hier kommt die Teamvorstellung..." data-en="Here comes the team introduction...">Hier kommt die Teamvorstellung...</p>
+            <p data-de="Du kannst hier mehrere Absätze, Bilder oder andere Inhalte einfügen." data-en="You can add multiple paragraphs, images or other content here.">Du kannst hier mehrere Absätze, Bilder oder andere Inhalte einfügen.</p>
         </div>
     </div>
 </div>
@@ -1623,10 +1749,14 @@ document.addEventListener('DOMContentLoaded', function() {
 <div id="missionModal" class="modal">
     <div class="modal-content">
         <span class="modal-close">&times;</span>
-        <h2>Unsere Mission</h2>
+        <h2 data-de="Unsere Mission" data-en="Our Mission">Unsere Mission</h2>
         <div class="team-intro">
-            <p>Sprache ist Dein Lebensvorteil.</p>
-            <p>Die Mission von Disce ist es, Sprache zu einem echten Lebensvorteil zu machen, indem wir die Lücke zwischen Absicht und Wirkung schließen.
+            <p data-de="Sprache ist Dein Lebensvorteil." data-en="Language is your life advantage.">Sprache ist Dein Lebensvorteil.</p>
+            <p data-de="Die Mission von Disce ist es, Sprache zu einem echten Lebensvorteil zu machen, indem wir die Lücke zwischen Absicht und Wirkung schließen.
+Wir coachen gesprochenes und geschriebenes Wort in realen Situationen, abgestimmt auf deine selbstgesetzte Ziele. Dabei nutzen wir zielorientiertes Lernen und multidimensionale Analysen, um messbare Leistung und echte Teilhabe innerhalb der DACH-Region zu ermöglichen.
+Denn eine Sprache zu lernen heißt, sie zu leben. Wir sorgen dafür, dass deine Ideen in jedem Kontext wirklich ankommen und du sagen kannst, was du wirklich meinst." data-en="Disce's mission is to make language a real life advantage by bridging the gap between intention and impact.
+We coach spoken and written language in real situations, aligned with your self-set goals. We use goal-oriented learning and multidimensional analysis to enable measurable performance and genuine participation within the DACH region.
+Because learning a language means living it. We ensure that your ideas truly land in every context and that you can say what you really mean.">Die Mission von Disce ist es, Sprache zu einem echten Lebensvorteil zu machen, indem wir die Lücke zwischen Absicht und Wirkung schließen.
 Wir coachen gesprochenes und geschriebenes Wort in realen Situationen, abgestimmt auf deine selbstgesetzte Ziele. Dabei nutzen wir zielorientiertes Lernen und multidimensionale Analysen, um messbare Leistung und echte Teilhabe innerhalb der DACH-Region zu ermöglichen.
 Denn eine Sprache zu lernen heißt, sie zu leben. Wir sorgen dafür, dass deine Ideen in jedem Kontext wirklich ankommen und du sagen kannst, was du wirklich meinst.</p>
         </div>
