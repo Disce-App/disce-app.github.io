@@ -602,10 +602,10 @@ header, main, footer {
 }
 
 .carousel-wrapper {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
-  position: relative;
+  /* kein gap nötig, Pfeile sind absolut positioniert */
 }
 
 .carousel-viewport {
@@ -619,23 +619,25 @@ header, main, footer {
   transition: transform 240ms ease-out;
 }
 
-/* Jede Slide ist exakt 100% breit */
+/* Jede Slide ist exakt so breit wie die .container */
 .carousel-slide {
   flex: 0 0 100%;
-  padding: 0 var(--space-md);  /* etwas mehr Luft links/rechts zur Viewport-Kante */
+  padding: 0;              /* KEIN horizontales Padding mehr */
   box-sizing: border-box;
 }
 
-/* Die Karte in der Slide mit extra Innenabstand */
+/* Die Karte in der Slide mit Innenabstand */
 .card.carousel-slide {
   width: 100%;
   border-radius: var(--radius-lg);
-  padding: var(--space-3xl) var(--space-2xl);  /* MEHR Platz: oben/unten & links/rechts */
+  padding: var(--space-3xl) var(--space-2xl);
 }
 
-/* Pfeile */
+/* Pfeile: über der Karte, verbrauchen keine Breite */
 .carousel-arrow {
-  flex-shrink: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.9);
   border: 2px solid var(--color-border);
   border-radius: 999px;
@@ -652,14 +654,23 @@ header, main, footer {
   user-select: none;
 }
 
+/* Links/Rechts-Position der Pfeile */
+.carousel-arrow-left {
+  left: -28px;   /* leicht außerhalb der Karte */
+}
+
+.carousel-arrow-right {
+  right: -28px;
+}
+
 .carousel-arrow:hover:not(:disabled) {
   background: var(--color-white);
   box-shadow: var(--shadow-card);
-  transform: scale(1.05);
+  transform: translateY(-50%) scale(1.05);
 }
 
 .carousel-arrow:active:not(:disabled) {
-  transform: scale(0.95);
+  transform: translateY(-50%) scale(0.95);
 }
 
 .carousel-arrow:disabled {
@@ -695,24 +706,24 @@ header, main, footer {
   background: var(--color-white);
 }
 
-/* Mobile: Pfeile und Abstände anpassen */
+/* Mobile: Pfeile näher an die Karte */
 @media (max-width: 640px) {
-  .carousel-wrapper {
-    gap: var(--space-sm);
-  }
-
   .carousel-arrow {
     width: 36px;
     height: 36px;
     font-size: 18px;
   }
 
-  .carousel-slide {
-    padding: 0 var(--space-sm);
+  .carousel-arrow-left {
+    left: -18px;
+  }
+
+  .carousel-arrow-right {
+    right: -18px;
   }
 
   .card.carousel-slide {
-    padding: var(--space-2xl) var(--space-xl); /* etwas weniger, damit es auf Mobile nicht zu gedrungen wird */
+    padding: var(--space-2xl) var(--space-xl);
   }
 }
 
