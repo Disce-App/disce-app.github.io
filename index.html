@@ -594,26 +594,24 @@ header, main, footer {
     line-height: 1.5;
 }
 
-    /* ===========================
+   /* ===========================
    STORY CAROUSEL
    =========================== */
 .story-carousel {
   padding: var(--space-xl) 0 var(--space-2xl);
 }
 
-.story-carousel .card {
-  /* Intro-Card bleibt optisch wie gehabt */
-}
-
 .carousel-wrapper {
   display: flex;
-  align-items: stretch;
+  align-items: center; /* GEÄNDERT: von stretch zu center */
   gap: var(--space-md);
+  position: relative; /* HINZUGEFÜGT */
 }
 
 .carousel-viewport {
   overflow: hidden;
   flex: 1;
+  position: relative; /* HINZUGEFÜGT */
 }
 
 .carousel-track {
@@ -624,34 +622,41 @@ header, main, footer {
 .carousel-slide {
   min-width: 100%;
   flex-shrink: 0;
+  padding: 0 2px; /* HINZUGEFÜGT: Verhindert Abschneiden an den Rändern */
 }
 
 /* Pfeile */
 .carousel-arrow {
-  align-self: center;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid var(--color-border);
+  flex-shrink: 0; /* HINZUGEFÜGT */
+  background: rgba(255, 255, 255, 0.9); /* GEÄNDERT: von 0.8 zu 0.9 */
+  border: 2px solid var(--color-border); /* GEÄNDERT: von 1px zu 2px */
   border-radius: 999px;
-  width: 36px;
-  height: 36px;
-  display: inline-flex;
+  width: 44px; /* GEÄNDERT: von 36px zu 44px für bessere Klickbarkeit */
+  height: 44px; /* GEÄNDERT: von 36px zu 44px */
+  display: flex; /* GEÄNDERT: von inline-flex zu flex */
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 22px; /* GEÄNDERT: von 20px zu 22px */
   color: var(--color-text-secondary);
   cursor: pointer;
   transition: background-color 140ms ease-out, transform 100ms ease-out, box-shadow 140ms ease-out;
+  z-index: 10; /* HINZUGEFÜGT: Stellt sicher dass Pfeile klickbar sind */
+  user-select: none; /* HINZUGEFÜGT: Verhindert Textauswahl beim Klicken */
 }
 
 .carousel-arrow:hover:not(:disabled) {
   background: var(--color-white);
   box-shadow: var(--shadow-card);
-  transform: translateY(-1px);
+  transform: scale(1.05); /* GEÄNDERT: von translateY(-1px) zu scale */
+}
+
+.carousel-arrow:active:not(:disabled) {
+  transform: scale(0.95); /* HINZUGEFÜGT: Feedback beim Klicken */
 }
 
 .carousel-arrow:disabled {
-  opacity: 0.4;
-  cursor: default;
+  opacity: 0.3; /* GEÄNDERT: von 0.4 zu 0.3 */
+  cursor: not-allowed;
 }
 
 /* Dots */
@@ -663,8 +668,8 @@ header, main, footer {
 }
 
 .carousel-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px; /* GEÄNDERT: von 8px zu 10px */
+  height: 10px; /* GEÄNDERT: von 8px zu 10px */
   border-radius: 999px;
   border: none;
   background: rgba(255, 255, 255, 0.5);
@@ -673,24 +678,26 @@ header, main, footer {
   transition: background-color 140ms ease-out, transform 100ms ease-out, width 140ms ease-out;
 }
 
-.carousel-dot.is-active {
-  width: 18px;
-  background: var(--color-primary);
-  transform: translateY(-1px);
+.carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.7); /* HINZUGEFÜGT */
 }
 
-/* Mobile: Pfeile kleiner / enger */
+.carousel-dot.is-active {
+  width: 24px; /* GEÄNDERT: von 18px zu 24px */
+  background: var(--color-white); /* GEÄNDERT: von primary zu white */
+}
+
+/* Mobile: Pfeile anpassen */
 @media (max-width: 640px) {
   .carousel-wrapper {
     gap: var(--space-xs);
   }
   .carousel-arrow {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     font-size: 18px;
   }
 }
-
 
 /* ===========================
    INFO CARDS
