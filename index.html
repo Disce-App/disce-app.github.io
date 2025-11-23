@@ -622,7 +622,11 @@ header, main, footer {
 .carousel-slide {
   min-width: 100%;
   flex-shrink: 0;
-  padding: 0 2px; /* HINZUGEFÜGT: Verhindert Abschneiden an den Rändern */
+  padding: 0;
+}
+    
+.carousel-slide .card {
+  margin: 0 2px; /* Verhindert Abschneiden, zählt nicht zur Slide-Breite */
 }
 
 /* Pfeile */
