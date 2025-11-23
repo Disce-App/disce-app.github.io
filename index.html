@@ -2315,13 +2315,18 @@ document.addEventListener('DOMContentLoaded', function() {
       dot.classList.toggle('is-active', i === currentIndex);
     });
 
-    // Pfeile aktiv/deaktivieren
-    if (prevBtn) prevBtn.disabled = currentIndex === 0;
-    if (nextBtn) nextBtn.disabled = currentIndex === slides.length - 1;
+    // Pfeile immer aktiv lassen (kein Deaktivieren mehr, da Loop)
+    if (prevBtn) prevBtn.disabled = false;
+    if (nextBtn) nextBtn.disabled = false;
   }
 
   function goTo(index) {
-    if (index < 0 || index >= slides.length) return;
+    // Wrap-Around-Logik
+    if (index < 0) {
+      index = slides.length - 1;     // von erster zur letzten
+    } else if (index >= slides.length) {
+      index = 0;                     // von letzter zur ersten
+    }
     currentIndex = index;
     updateCarousel();
   }
