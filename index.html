@@ -625,9 +625,10 @@ header, main, footer {
   padding: 0;
 }
     
-.carousel-slide .card {
-  margin: 0 2px; /* Verhindert Abschneiden, zählt nicht zur Slide-Breite */
-  width: 100%;
+.carousel-slide.card {  /* ← Punkt statt Leerzeichen! */
+  margin: 0 2px;
+  width: calc(100% - 4px);
+  box-sizing: border-box;
 }
 
 /* Pfeile */
