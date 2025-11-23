@@ -536,17 +536,20 @@ header, main, footer {
    DWDS SIDEBAR (Artikel des Tages)
    =========================== */
 
-/* Linke Sidebar, symmetrisch zur Substack-Sidebar rechts */
+/* Linke Sidebar, relativ zum Content-Bereich positioniert */
 .dwds-sidebar {
-  position: fixed;
-  top: 100px;
-  left: max(var(--space-xl), calc((100vw - 1400px) / 2 + var(--space-xl)));
+  position: absolute;
+  /* .content-with-sidebar hat padding-top: 0,
+     .synonym-section-wrapper hat padding-top: 3rem
+     -> gleicher Startpunkt wie der Synonym-Finder */
+  top: 3rem;
+  left: 0; /* am linken Rand des Content-Bereichs */
   width: 340px;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
   padding-right: 8px;
   border-radius: 12px;
-  z-index: 2; /* über Hintergrund, unter Language-Toggle */
+  z-index: 2;
 }
 
 /* Scrollbar wie rechts */
