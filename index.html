@@ -594,6 +594,104 @@ header, main, footer {
     line-height: 1.5;
 }
 
+    /* ===========================
+   STORY CAROUSEL
+   =========================== */
+.story-carousel {
+  padding: var(--space-xl) 0 var(--space-2xl);
+}
+
+.story-carousel .card {
+  /* Intro-Card bleibt optisch wie gehabt */
+}
+
+.carousel-wrapper {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-md);
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  flex: 1;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 240ms ease-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+
+/* Pfeile */
+.carousel-arrow {
+  align-self: center;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background-color 140ms ease-out, transform 100ms ease-out, box-shadow 140ms ease-out;
+}
+
+.carousel-arrow:hover:not(:disabled) {
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+  transform: translateY(-1px);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Dots */
+.carousel-dots {
+  margin-top: var(--space-lg);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 140ms ease-out, transform 100ms ease-out, width 140ms ease-out;
+}
+
+.carousel-dot.is-active {
+  width: 18px;
+  background: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+/* Mobile: Pfeile kleiner / enger */
+@media (max-width: 640px) {
+  .carousel-wrapper {
+    gap: var(--space-xs);
+  }
+  .carousel-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+}
+
+
 /* ===========================
    INFO CARDS
    =========================== */
@@ -1229,43 +1327,100 @@ header, main, footer {
         <!-- Divider -->
         <div class="divider"></div>
 
-        <!-- Introduction Section -->
-        <section class="intro">
-            <div class="container">
-                <div class="card">
-                    <h2 data-de="Präzise sprechen. Register beherrschen." data-en="Speak precisely. Master registers.">Präzise sprechen. Register beherrschen.</h2>
-                    <p class="intro-text" data-de="Disce hilft dir, auf B2–C2-Niveau souverän, situationsgerecht und mit dem richtigen Ton zu sprechen und zu schreiben. Ob akademisch, beruflich oder im Alltag – du lernst, was du meinst präzise auszudrücken." data-en="Disce helps you speak and write confidently, appropriately, and with the right tone at B2–C2 level. Whether academic, professional, or everyday – you learn to express precisely what you mean.">
-                        Disce hilft dir, auf B2–C2-Niveau souverän, situationsgerecht und mit dem richtigen Ton zu sprechen und zu schreiben. Ob akademisch, beruflich oder im Alltag – du lernst, was du meinst präzise auszudrücken.
-                    </p>
-                    
-                    <div class="features">
-                        <div class="feature">
-                            <div class="feature-icon" aria-hidden="true">✍️</div>
-                            <div class="feature-content">
-                                <h3 data-de="Schreiben" data-en="Writing">Schreiben</h3>
-                                <p data-de="Coaching für Register, Ton und Kohäsion" data-en="Coaching for register, tone and cohesion">Coaching für Register, Ton und Kohäsion</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature">
-                            <div class="feature-icon" aria-hidden="true">🗣️</div>
-                            <div class="feature-content">
-                                <h3 data-de="Sprechen" data-en="Speaking">Sprechen</h3>
-                                <p data-de="Prosodie, Aussprache, Situationskarten" data-en="Prosody, pronunciation, situation cards">Prosodie, Aussprache, Situationskarten</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature">
-                            <div class="feature-icon" aria-hidden="true">🛠️</div>
-                            <div class="feature-content">
-                                <h3 data-de="Werkzeugkiste" data-en="Toolkit">Werkzeugkiste</h3>
-                                <p data-de="Idiome, Konnektoren, Registerleiter" data-en="Idioms, connectors, register ladder">Idiome, Konnektoren, Registerleiter</p>
-                            </div>
-                        </div>
-                    </div>
+       <!-- Story / Intro Carousel Section -->
+<section class="intro story-carousel" id="story">
+  <div class="container">
+    <div class="carousel-wrapper">
+      <!-- Linker Pfeil -->
+      <button 
+        class="carousel-arrow carousel-arrow-left" 
+        aria-label="Vorherige Karte"
+      >
+        ‹
+      </button>
+
+      <!-- Sichtfenster -->
+      <div class="carousel-viewport">
+        <div class="carousel-track">
+          
+          <!-- Slide 1: deine bisherige Intro-Karte -->
+          <article class="card carousel-slide is-active">
+            <h2 
+              data-de="Präzise sprechen. Register beherrschen." 
+              data-en="Speak precisely. Master registers."
+            >
+              Präzise sprechen. Register beherrschen.
+            </h2>
+            <p 
+              class="intro-text" 
+              data-de="Disce hilft dir, auf B2–C2-Niveau souverän, situationsgerecht und mit dem richtigen Ton zu sprechen und zu schreiben. Ob akademisch, beruflich oder im Alltag – du lernst, was du meinst präzise auszudrücken." 
+              data-en="Disce helps you speak and write confidently, appropriately, and with the right tone at B2–C2 level. Whether academic, professional, or everyday – you learn to express precisely what you mean."
+            >
+              Disce hilft dir, auf B2–C2-Niveau souverän, situationsgerecht und mit dem richtigen Ton zu sprechen und zu schreiben. Ob akademisch, beruflich oder im Alltag – du lernst, was du meinst präzise auszudrücken.
+            </p>
+            
+            <div class="features">
+              <div class="feature">
+                <div class="feature-icon" aria-hidden="true">✍️</div>
+                <div class="feature-content">
+                  <h3 data-de="Schreiben" data-en="Writing">Schreiben</h3>
+                  <p data-de="Coaching für Register, Ton und Kohäsion" data-en="Coaching for register, tone and cohesion">
+                    Coaching für Register, Ton und Kohäsion
+                  </p>
                 </div>
+              </div>
+              
+              <div class="feature">
+                <div class="feature-icon" aria-hidden="true">🗣️</div>
+                <div class="feature-content">
+                  <h3 data-de="Sprechen" data-en="Speaking">Sprechen</h3>
+                  <p data-de="Prosodie, Aussprache, Situationskarten" data-en="Prosody, pronunciation, situation cards">
+                    Prosodie, Aussprache, Situationskarten
+                  </p>
+                </div>
+              </div>
+              
+              <div class="feature">
+                <div class="feature-icon" aria-hidden="true">🛠️</div>
+                <div class="feature-content">
+                  <h3 data-de="Werkzeugkiste" data-en="Toolkit">Werkzeugkiste</h3>
+                  <p data-de="Idiome, Konnektoren, Registerleiter" data-en="Idioms, connectors, register ladder">
+                    Idiome, Konnektoren, Registerleiter
+                  </p>
+                </div>
+              </div>
             </div>
-        </section>
+          </article>
+
+          <!-- TODO: Hier kannst du später weitere Slides einfügen
+          <article class="card carousel-slide">
+            ...
+          </article>
+          -->
+
+        </div>
+      </div>
+
+      <!-- Rechter Pfeil -->
+      <button 
+        class="carousel-arrow carousel-arrow-right" 
+        aria-label="Nächste Karte"
+      >
+        ›
+      </button>
+    </div>
+
+    <!-- Dots-Navigation -->
+    <div class="carousel-dots" aria-label="Story-Navigation">
+      <button 
+        class="carousel-dot is-active" 
+        type="button" 
+        aria-label="Karte 1"
+      ></button>
+      <!-- Für weitere Karten später weitere Dots ergänzen -->
+    </div>
+  </div>
+</section>
 
         <!-- INFO CARDS SECTION -->
         <section class="info-cards">
@@ -1853,6 +2008,66 @@ Denn eine Sprache zu lernen heißt, sie zu leben. Wir sorgen dafür, dass deine 
     </div>
 </div>
 
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const track = document.querySelector('.story-carousel .carousel-track');
+  if (!track) return;
+
+  const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+  const prevBtn = document.querySelector('.story-carousel .carousel-arrow-left');
+  const nextBtn = document.querySelector('.story-carousel .carousel-arrow-right');
+  const dotsContainer = document.querySelector('.story-carousel .carousel-dots');
+  const dots = dotsContainer ? Array.from(dotsContainer.querySelectorAll('.carousel-dot')) : [];
+
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    const offset = -currentIndex * 100;
+    track.style.transform = 'translateX(' + offset + '%)';
+
+    // Active-Klasse für Slides (optional, z.B. für Animationen)
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('is-active', i === currentIndex);
+    });
+
+    // Dots aktualisieren
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === currentIndex);
+    });
+
+    // Pfeile aktiv/deaktivieren
+    if (prevBtn) prevBtn.disabled = currentIndex === 0;
+    if (nextBtn) nextBtn.disabled = currentIndex === slides.length - 1;
+  }
+
+  function goTo(index) {
+    if (index < 0 || index >= slides.length) return;
+    currentIndex = index;
+    updateCarousel();
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function() {
+      goTo(currentIndex - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+      goTo(currentIndex + 1);
+    });
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', function() {
+      goTo(index);
+    });
+  });
+
+  // Initialzustand
+  updateCarousel();
+});
+</script>
     
 </body>
 </html>
