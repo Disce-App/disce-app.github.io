@@ -1350,7 +1350,7 @@ header, main, footer {
       <div class="carousel-viewport">
         <div class="carousel-track">
           
-          <!-- Slide 1: deine bisherige Intro-Karte -->
+          <!-- Slide 1: Hauptbotschaft -->
           <article class="card carousel-slide is-active">
             <h2 
               data-de="Präzise sprechen. Register beherrschen." 
@@ -1399,11 +1399,54 @@ header, main, footer {
             </div>
           </article>
 
-          <!-- TODO: Hier kannst du später weitere Slides einfügen
+          <!-- Slide 2: Für wen ist Disce? -->
           <article class="card carousel-slide">
-            ...
+            <h2 
+              data-de="Für wen ist Disce?" 
+              data-en="Who is Disce for?"
+            >
+              Für wen ist Disce?
+            </h2>
+            <p 
+              class="intro-text" 
+              data-de="Disce ist für fortgeschrittene Lernende (B2–C2), die Deutsch nicht nur verstehen, sondern in allen Lebensbereichen sicher und wirkungsvoll einsetzen möchten." 
+              data-en="Disce is for advanced learners (B2–C2) who want not only to understand German, but to use it confidently and effectively in all areas of life."
+            >
+              Disce ist für fortgeschrittene Lernende (B2–C2), die Deutsch nicht nur verstehen, sondern in allen Lebensbereichen sicher und wirkungsvoll einsetzen möchten.
+            </p>
+            
+            <div class="features">
+              <div class="feature">
+                <div class="feature-icon" aria-hidden="true">🎓</div>
+                <div class="feature-content">
+                  <h3 data-de="Akademisch" data-en="Academic">Akademisch</h3>
+                  <p data-de="Studierende, die Präsentationen halten, Hausarbeiten schreiben und an Seminaren teilnehmen" data-en="Students giving presentations, writing papers and participating in seminars">
+                    Studierende, die Präsentationen halten, Hausarbeiten schreiben und an Seminaren teilnehmen
+                  </p>
+                </div>
+              </div>
+              
+              <div class="feature">
+                <div class="feature-icon" aria-hidden="true">💼</div>
+                <div class="feature-content">
+                  <h3 data-de="Beruflich" data-en="Professional">Beruflich</h3>
+                  <p data-de="Fachkräfte, die in Meetings überzeugen, E-Mails formulieren und Verhandlungen führen" data-en="Professionals convincing in meetings, composing emails and conducting negotiations">
+                    Fachkräfte, die in Meetings überzeugen, E-Mails formulieren und Verhandlungen führen
+                  </p>
+                </div>
+              </div>
+              
+              <div class="feature">
+                <div class="feature-icon" aria-hidden="true">🌍</div>
+                <div class="feature-content">
+                  <h3 data-de="Alltag" data-en="Everyday">Alltag</h3>
+                  <p data-de="Menschen, die im DACH-Raum leben und am gesellschaftlichen Leben voll teilhaben möchten" data-en="People living in the DACH region who want to participate fully in social life">
+                    Menschen, die im DACH-Raum leben und am gesellschaftlichen Leben voll teilhaben möchten
+                  </p>
+                </div>
+              </div>
+            </div>
           </article>
-          -->
 
         </div>
       </div>
@@ -1417,14 +1460,18 @@ header, main, footer {
       </button>
     </div>
 
-    <!-- Dots-Navigation -->
+    <!-- Dots-Navigation (jetzt mit 2 Dots) -->
     <div class="carousel-dots" aria-label="Story-Navigation">
       <button 
         class="carousel-dot is-active" 
         type="button" 
         aria-label="Karte 1"
       ></button>
-      <!-- Für weitere Karten später weitere Dots ergänzen -->
+      <button 
+        class="carousel-dot" 
+        type="button" 
+        aria-label="Karte 2"
+      ></button>
     </div>
   </div>
 </section>
