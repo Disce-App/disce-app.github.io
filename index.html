@@ -612,11 +612,13 @@ header, main, footer {
   overflow: hidden;
   flex: 1;
   position: relative;
+  padding: 2px; /* HINZUGEFÜGT: Verhindert Abschneiden der border-radius und box-shadow */
 }
 
 .carousel-track {
   display: flex;
   transition: transform 240ms ease-out;
+  margin: -2px; /* HINZUGEFÜGT: Kompensiert das Viewport-Padding */
 }
 
 .carousel-slide {
@@ -626,11 +628,11 @@ header, main, footer {
 }
     
 .carousel-slide.card {
-  margin: 0 4px; /* GEÄNDERT: von 2px zu 4px */
-  width: calc(100% - 8px); /* GEÄNDERT: von 4px zu 8px (2x margin) */
+  margin: 0 4px;
+  width: calc(100% - 8px);
   box-sizing: border-box;
-  padding: var(--space-xl) var(--space-lg); /* HINZUGEFÜGT: Großzügigeres internes Padding */
-  border-radius: var(--radius-lg); /* HINZUGEFÜGT: Gleiche Abrundung (12px) wie alle anderen Karten */
+  padding: var(--space-xl) var(--space-lg);
+  border-radius: var(--radius-lg); /* Gleiche Abrundung wie alle anderen Karten */
 }
 
 /* Pfeile */
