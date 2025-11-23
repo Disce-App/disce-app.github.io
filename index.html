@@ -612,27 +612,25 @@ header, main, footer {
   flex: 1;
   overflow: hidden;
   position: relative;
-  /* KEIN padding mehr – verhindert Abschneiden */
 }
 
 .carousel-track {
   display: flex;
   transition: transform 240ms ease-out;
-  /* KEIN margin mehr */
 }
 
 /* Jede Slide ist exakt 100% breit */
 .carousel-slide {
   flex: 0 0 100%;
-  padding: 0 var(--space-sm);  /* kleiner Innenabstand, damit die Karte nicht am Rand klebt */
+  padding: 0 var(--space-md);  /* etwas mehr Luft links/rechts zur Viewport-Kante */
   box-sizing: border-box;
 }
 
-/* Die Karte in der Slide nutzt den normalen Card-Stil + Abrundung */
+/* Die Karte in der Slide mit extra Innenabstand */
 .card.carousel-slide {
   width: 100%;
   border-radius: var(--radius-lg);
-  /* Padding kommt aus .card (var(--space-2xl)), musst du nicht doppelt setzen */
+  padding: var(--space-3xl) var(--space-2xl);  /* MEHR Platz: oben/unten & links/rechts */
 }
 
 /* Pfeile */
@@ -710,7 +708,11 @@ header, main, footer {
   }
 
   .carousel-slide {
-    padding: 0 var(--space-xs);
+    padding: 0 var(--space-sm);
+  }
+
+  .card.carousel-slide {
+    padding: var(--space-2xl) var(--space-xl); /* etwas weniger, damit es auf Mobile nicht zu gedrungen wird */
   }
 }
 
