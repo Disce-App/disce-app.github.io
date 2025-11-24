@@ -2478,16 +2478,27 @@ document.addEventListener('DOMContentLoaded', async function() {
       (linkNode && linkNode.getAttribute('href')) ||
       'https://www.dwds.de/';
 
-    // Teaser / Zusammenfassung
-    const summaryNode =
-      entry.querySelector('summary') ||
-      entry.querySelector('content');
-    let teaser = summaryNode ? summaryNode.textContent.trim() : '';
+   // Teaser / Zusammenfassung
+const summaryNode =
+  entry.querySelector('summary') ||
+  entry.querySelector('content');
 
-    // Evtl. etwas kürzen
-    if (teaser.length > 280) {
-      teaser = teaser.slice(0, 277) + '…';
-    }
+let teaser = summaryNode ? summaryNode.textContent : '';
+
+// Whitespace glätten
+teaser = teaser.replace(/\s+/g, ' ').trim();
+
+// Max. Länge / Sätze begrenzen
+const MAX_TEASER_CHARS = 220;
+
+// Versuche: nur den ersten Satz nehmen, wenn er kurz genug ist
+const sentenceEnd = teaser.indexOf('. ');
+if (sentenceEnd !== -1 && sentenceEnd < MAX_TEASER_CHARS) {
+  teaser = teaser.slice(0, sentenceEnd + 1);
+} else if (teaser.length > MAX_TEASER_CHARS) {
+  // sonst hart bei MAX_TEASER_CHARS abschneiden
+  teaser = teaser.slice(0, MAX_TEASER_CHARS - 1) + '…';
+}
 
     // Datum
     const dateText =
