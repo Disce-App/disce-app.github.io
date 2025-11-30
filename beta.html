@@ -55,7 +55,7 @@
             padding: 0 var(--space-xl);
         }
 
-        /* Breiterer Container für CodePen */
+        /* Breiterer Container für Prototyp-Embed */
         .wide-container {
             max-width: 1600px;
             margin: 0 auto;
@@ -169,7 +169,7 @@
             background: #B06A4A;
         }
 
-        /* CodePen Embed Styles */
+        /* Prototyp-Embed Styles */
         .codepen-section {
             background: white;
             border-radius: var(--radius-lg);
@@ -260,41 +260,45 @@
     </header>
 
     <!-- Main Content -->
-<main class="main-content">
-    <div class="container">
-        <div class="intro-text">
-            <p>Hier findest du unsere neuesten Features und Prototypen. Teste sie aus und gib uns Feedback!</p>
-        </div>
-    </div>
-    
-    <!-- CodePen Embed Section -->
-    <div class="wide-container">
-        <div class="codepen-section">
-            <div class="codepen-header">
-                <h3>Interaktiver Prototyp</h3>
-                <p>Teste unseren neuesten Prototyp direkt hier im Browser.</p>
+    <main class="main-content">
+        <div class="container">
+            <div class="intro-text">
+                <p>Hier findest du unsere neuesten Features und Prototypen. Teste sie aus und gib uns Feedback!</p>
             </div>
-            <iframe class="codepen-embed" 
-                    src="https://codepen.io/Disce-App/embed/raeBdjV?default-tab=result" 
-                    loading="lazy" 
-                    allowtransparency="true" 
-                    allowfullscreen="true">
-            </iframe>
-            <a href="https://codepen.io/Disce-App/pen/raeBdjV" 
-               class="prototype-link" 
-               target="_blank" 
-               rel="noopener noreferrer">Vollansicht öffnen →</a>
         </div>
-    </div>
-
-    <div class="container">
-        <!-- Prototype Grid for future prototypes -->
-        <div class="prototype-grid">
-            <!-- Weitere Prototypen können hier später hinzugefügt werden -->
+        
+        <!-- Prototyp-Embed Section -->
+        <div class="wide-container">
+            <div class="codepen-section">
+                <div class="codepen-header">
+                    <h3>Interaktiver Prototyp</h3>
+                    <p>Teste unseren neuesten End-to-End-Onboarding-Prototyp direkt hier im Browser.</p>
+                </div>
+                <iframe
+                    class="codepen-embed"
+                    src="https://project-disce-end-to-end-prototype-625.magicpatterns.app/"
+                    loading="lazy"
+                    allowtransparency="true"
+                    allowfullscreen="true"
+                ></iframe>
+                <a
+                    href="https://project-disce-end-to-end-prototype-625.magicpatterns.app/"
+                    class="prototype-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    In voller Größe öffnen →
+                </a>
+            </div>
         </div>
-    </div>
-</main>
 
+        <div class="container">
+            <!-- Prototype Grid for future prototypes -->
+            <div class="prototype-grid">
+                <!-- Weitere Prototypen können hier später hinzugefügt werden -->
+            </div>
+        </div>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
