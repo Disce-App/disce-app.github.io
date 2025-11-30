@@ -196,11 +196,11 @@
             margin-bottom: var(--space-lg);
         }
 
+        /* Desktop: „verkleinerter“ Screen */
         .embed-frame-wrapper {
             display: flex;
             justify-content: center;
             overflow: hidden;
-            /* Sichtbare Größe des „Screens“ (runtergerechnet) */
             width: 864px;  /* 1440 * 0.6 */
             height: 540px; /*  900 * 0.6 */
             margin: 0 auto var(--space-lg);
@@ -209,7 +209,6 @@
         }
 
         .codepen-embed {
-            /* Virtuelle Größe: genug Platz, damit im iframe keine Scrollbars nötig sind */
             width: 1440px;
             height: 900px;
             border: none;
@@ -239,22 +238,16 @@
         /* ===========================
            RESPONSIVE
            =========================== */
-        @media (max-width: 940px) {
+
+        /* Tablet & kleinere Laptops: Wrapper darf max. 100% breit sein */
+        @media (max-width: 960px) {
             .embed-frame-wrapper {
                 width: 100%;
                 max-width: 100%;
-                height: auto;
-                overflow-x: auto;
-            }
-
-            .codepen-embed {
-                /* Auf kleineren Screens lieber volle Breite + scrollen, statt zu starkes Scaling */
-                transform: none;
-                width: 1000px;
-                height: 700px;
             }
         }
 
+        /* Smartphones: volle Breite, responsive iFrame mit 16:9-Ratio */
         @media (max-width: 640px) {
             h1 {
                 font-size: 24px;
@@ -271,6 +264,26 @@
 
             .prototype-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .codepen-section {
+                padding: var(--space-lg);
+            }
+
+            .embed-frame-wrapper {
+                width: 100%;
+                max-width: 100%;
+                /* Höhe automatisch aus Breite ableiten (16:9) */
+                aspect-ratio: 16 / 9;
+                height: auto;
+                border-radius: 16px;
+            }
+
+            .codepen-embed {
+                width: 100%;
+                height: 100%;
+                transform: none;          /* kein künstliches Scaling auf dem Handy */
+                transform-origin: unset;
             }
         }
     </style>
