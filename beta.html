@@ -194,11 +194,17 @@
             margin-bottom: var(--space-lg);
         }
 
+        .embed-frame-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
         .codepen-embed {
-            width: 100%;
-            height: 2000px;
+            width: 390px;
+            max-width: 100%;
+            height: 844px;
             border: 1px solid #e0e0e0;
-            border-radius: var(--radius-sm);
+            border-radius: 20px;
             margin-bottom: var(--space-lg);
         }
 
@@ -243,7 +249,8 @@
             }
 
             .codepen-embed {
-                height: 2000px;
+                width: 100%;
+                height: 844px;
             }
         }
     </style>
@@ -274,13 +281,15 @@
                     <h3>Interaktiver Prototyp</h3>
                     <p>Teste unseren neuesten End-to-End-Onboarding-Prototyp direkt hier im Browser.</p>
                 </div>
-                <iframe
-                    class="codepen-embed"
-                    src="https://project-disce-end-to-end-prototype-625.magicpatterns.app/"
-                    loading="lazy"
-                    allowtransparency="true"
-                    allowfullscreen="true"
-                ></iframe>
+                <div class="embed-frame-wrapper">
+                    <iframe
+                        class="codepen-embed"
+                        src="https://project-disce-end-to-end-prototype-625.magicpatterns.app/"
+                        loading="lazy"
+                        allowtransparency="true"
+                        allowfullscreen="true"
+                    ></iframe>
+                </div>
                 <a
                     href="https://project-disce-end-to-end-prototype-625.magicpatterns.app/"
                     class="prototype-link"
