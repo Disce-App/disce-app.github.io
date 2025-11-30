@@ -247,7 +247,7 @@
             }
         }
 
-        /* Smartphones: volle Breite, hohe iFrame-Fläche (≈80% des Screens) */
+        /* Smartphones */
         @media (max-width: 640px) {
             h1 {
                 font-size: 24px;
@@ -270,18 +270,22 @@
                 padding: var(--space-lg);
             }
 
+            /* WICHTIG: Rahmen erlaubt horizontales Scrollen, iFrame ist breiter als der Screen */
             .embed-frame-wrapper {
                 width: 100%;
                 max-width: 100%;
-                /* Statt 16:9 – nutze den Screen: */
-                height: 120vh;          /* hier kannst du 75–90 anpassen, je nach Geschmack */
+                height: 120vh;       /* hohe Fläche für den Prototyp */
                 border-radius: 16px;
+                overflow-x: auto;    /* seitliches Scrollen erlauben */
+                overflow-y: hidden;  /* vertikales Scrollen passiert in der Seite, nicht im Wrapper */
+                justify-content: flex-start; /* iFrame links beginnen lassen */
             }
 
             .codepen-embed {
-                width: 100%;
-                height: 100%;
-                transform: none;      /* kein künstliches Scaling auf dem Handy */
+                width: 480px;        /* BREITER als das Handyfenster – Wert nach Geschmack anpassen */
+                height: 120vh;
+                border: none;
+                transform: none;     /* kein künstliches Scaling auf dem Handy */
                 transform-origin: unset;
             }
         }
