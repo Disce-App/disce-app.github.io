@@ -41,6 +41,11 @@
             box-sizing: border-box;
         }
 
+        html,
+        body {
+            overflow-x: hidden; /* NEU: global kein horizontales Scrollen */
+        }
+
         body {
             font-family: var(--font-body);
             color: var(--color-text);
@@ -270,22 +275,21 @@
                 padding: var(--space-lg);
             }
 
-            /* WICHTIG: Rahmen erlaubt horizontales Scrollen, iFrame ist breiter als der Screen */
+            /* NEU: kein horizontales Scrollen im Wrapper, iFrame passt sich an */
             .embed-frame-wrapper {
                 width: 100%;
                 max-width: 100%;
-                height: 120vh;       /* hohe Fläche für den Prototyp */
+                height: 120vh;
                 border-radius: 16px;
-                overflow-x: auto;    /* seitliches Scrollen erlauben */
-                overflow-y: hidden;  /* vertikales Scrollen passiert in der Seite, nicht im Wrapper */
-                justify-content: flex-start; /* iFrame links beginnen lassen */
+                overflow: hidden;      /* statt overflow-x: auto */
+                justify-content: center;
             }
 
             .codepen-embed {
-                width: 600px;        /* BREITER als das Handyfenster – Wert nach Geschmack anpassen */
-                height: 120vh;
+                width: 100%;           /* statt 600px */
+                height: 100%;
                 border: none;
-                transform: none;     /* kein künstliches Scaling auf dem Handy */
+                transform: none;       /* kein zusätzliches Scaling */
                 transform-origin: unset;
             }
         }
