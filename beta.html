@@ -31,9 +31,9 @@
             --shadow-card: 0 2px 8px rgba(0,0,0,0.08);
             --shadow-hover: 0 8px 24px rgba(0,0,0,0.12);
             
-            /* NEU: Phone-Dimensionen als Variable */
-            --phone-width: 390px;
-            --phone-height: 844px;
+            /* Prototyp-Dimensionen (fest im React-Code) */
+            --prototype-width: 460px;
+            --prototype-height: 844px;
         }
 
         /* ===========================
@@ -177,7 +177,9 @@
             background: #B06A4A;
         }
 
-        /* Prototyp-Embed Styles */
+        /* ===========================
+           PROTOTYP-EMBED STYLES
+           =========================== */
         .codepen-section {
             background: white;
             border-radius: var(--radius-lg);
@@ -205,7 +207,7 @@
             margin-bottom: var(--space-lg);
         }
 
-        /* Desktop: „verkleinerter" Screen */
+        /* Desktop: Skalierter Screen */
         .embed-frame-wrapper {
             display: flex;
             justify-content: center;
@@ -215,6 +217,7 @@
             margin: 0 auto var(--space-lg);
             border-radius: 20px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+            background: #f0f0f0;
         }
 
         .codepen-embed {
@@ -249,14 +252,32 @@
            =========================== */
 
         /* Tablet & kleinere Laptops */
-        @media (max-width: 960px) {
+        @media (max-width: 1200px) {
             .embed-frame-wrapper {
                 width: 100%;
                 max-width: 100%;
             }
         }
 
-        /* Smartphones – KOMPLETT ÜBERARBEITET */
+        /* Tablets */
+        @media (max-width: 960px) {
+            .wide-container {
+                padding: 0 var(--space-md);
+            }
+            
+            .embed-frame-wrapper {
+                width: 100%;
+                height: 600px;
+            }
+            
+            .codepen-embed {
+                transform: scale(0.65);
+            }
+        }
+
+        /* ===========================
+           SMARTPHONES – MIT SKALIERUNG
+           =========================== */
         @media (max-width: 640px) {
             h1 {
                 font-size: 24px;
@@ -267,8 +288,24 @@
                 align-items: flex-start;
             }
 
+            .container {
+                padding: 0 var(--space-md);
+            }
+
+            .wide-container {
+                padding: 0 var(--space-sm);
+            }
+
+            .intro-text {
+                margin-bottom: var(--space-xl);
+            }
+
             .intro-text p {
                 font-size: 16px;
+            }
+
+            .main-content {
+                padding: var(--space-xl) 0;
             }
 
             .prototype-grid {
@@ -277,46 +314,84 @@
 
             .codepen-section {
                 padding: var(--space-md);
-                margin-left: var(--space-md);
-                margin-right: var(--space-md);
+                margin-left: 0;
+                margin-right: 0;
+                border-radius: var(--radius-md);
             }
 
-            /* NEU: Feste Phone-Dimensionen für den iFrame */
+            .codepen-header h3 {
+                font-size: 20px;
+            }
+
+            .codepen-header p {
+                font-size: 14px;
+                margin-bottom: var(--space-md);
+            }
+
+            /* 
+             * MOBILE IFRAME SKALIERUNG
+             * Der Prototyp ist 460×844px.
+             * Wir skalieren ihn, sodass er in die Viewport-Breite passt.
+             * Scale-Faktor: (100vw - 32px) / 460px
+             * Für iPhone 14 (390px): (390-32) / 460 = 0.778
+             */
             .embed-frame-wrapper {
-                width: 100%;
-                max-width: calc(var(--phone-width) + 24px); /* 390px + etwas Padding */
-                height: calc(var(--phone-height) + 24px);   /* 844px + etwas Padding */
-                margin: 0 auto var(--space-lg);
-                border-radius: 24px;
+                /* Wrapper nimmt die skalierte Größe ein */
+                width: calc(100vw - 32px);
+                /* Höhe = Prototyp-Höhe × Scale-Faktor */
+                /* 844 × ((100vw - 32px) / 460) */
+                height: calc(844px * ((100vw - 32px) / 460px));
+                max-height: 85vh; /* Nicht zu hoch, damit man scrollen kann */
+                margin: 0 auto var(--space-md);
+                border-radius: 16px;
                 overflow: hidden;
-                background: #f5f5f5; /* Hintergrund falls iFrame lädt */
-                display: flex;
-                justify-content: center;
-                align-items: flex-start; /* oben ausrichten */
+                background: #e8e8e8;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+                position: relative;
             }
 
             .codepen-embed {
-                width: var(--phone-width);  /* 390px */
-                height: var(--phone-height); /* 844px */
+                /* Echte Prototyp-Größe */
+                width: 460px;
+                height: 844px;
                 border: none;
-                transform: none;
-                transform-origin: unset;
-                border-radius: 24px;
+                /* Skalieren auf verfügbare Breite */
+                transform: scale(calc((100vw - 32px) / 460px));
+                transform-origin: top left;
+                position: absolute;
+                top: 0;
+                left: 0;
             }
-            
-            /* Noch kleinere Screens: skalieren */
-            @media (max-width: 420px) {
-                .embed-frame-wrapper {
-                    /* Dynamisch skalieren, aber Aspect Ratio behalten */
-                    width: calc(100vw - 32px);
-                    height: calc((100vw - 32px) * 2.164); /* 844/390 ≈ 2.164 */
-                    max-height: 90vh;
-                }
-                
-                .codepen-embed {
-                    width: 100%;
-                    height: 100%;
-                }
+
+            .prototype-link {
+                width: 100%;
+                text-align: center;
+                padding: var(--space-md) var(--space-lg);
+            }
+
+            .footer {
+                margin-top: var(--space-2xl);
+            }
+        }
+
+        /* Sehr kleine Screens (iPhone SE, etc.) */
+        @media (max-width: 380px) {
+            .wide-container {
+                padding: 0 var(--space-xs);
+            }
+
+            .codepen-section {
+                padding: var(--space-sm);
+            }
+
+            .embed-frame-wrapper {
+                width: calc(100vw - 24px);
+                height: calc(844px * ((100vw - 24px) / 460px));
+                border-radius: 12px;
+            }
+
+            .codepen-embed {
+                transform: scale(calc((100vw - 24px) / 460px));
             }
         }
     </style>
