@@ -31,7 +31,7 @@
             --shadow-card: 0 2px 8px rgba(0,0,0,0.08);
             --shadow-hover: 0 8px 24px rgba(0,0,0,0.12);
             
-            /* Prototyp-Dimensionen (fest im React-Code) */
+            /* Prototyp-Dimensionen */
             --prototype-width: 460px;
             --prototype-height: 844px;
         }
@@ -276,7 +276,7 @@
         }
 
         /* ===========================
-           SMARTPHONES – MIT SKALIERUNG
+           SMARTPHONES – KORRIGIERT
            =========================== */
         @media (max-width: 640px) {
             h1 {
@@ -292,8 +292,9 @@
                 padding: 0 var(--space-md);
             }
 
+            /* WICHTIG: Padding auf 0 setzen für den Prototyp-Container */
             .wide-container {
-                padding: 0 var(--space-sm);
+                padding: 0 var(--space-xs);
             }
 
             .intro-text {
@@ -312,8 +313,9 @@
                 grid-template-columns: 1fr;
             }
 
+            /* Minimales Padding für die Section */
             .codepen-section {
-                padding: var(--space-md);
+                padding: var(--space-sm);
                 margin-left: 0;
                 margin-right: 0;
                 border-radius: var(--radius-md);
@@ -325,23 +327,22 @@
 
             .codepen-header p {
                 font-size: 14px;
-                margin-bottom: var(--space-md);
+                margin-bottom: var(--space-sm);
             }
 
             /* 
-             * MOBILE IFRAME SKALIERUNG
-             * Der Prototyp ist 460×844px.
-             * Wir skalieren ihn, sodass er in die Viewport-Breite passt.
-             * Scale-Faktor: (100vw - 32px) / 460px
-             * Für iPhone 14 (390px): (390-32) / 460 = 0.778
+             * KORRIGIERTE BERECHNUNG:
+             * wide-container padding: 8px × 2 = 16px
+             * codepen-section padding: 12px × 2 = 24px
+             * Gesamt: 40px
+             * 
+             * Wrapper = 100% der verfügbaren Breite
              */
             .embed-frame-wrapper {
-                /* Wrapper nimmt die skalierte Größe ein */
-                width: calc(100vw - 32px);
-                /* Höhe = Prototyp-Höhe × Scale-Faktor */
-                /* 844 × ((100vw - 32px) / 460) */
-                height: calc(844px * ((100vw - 32px) / 460px));
-                max-height: 85vh; /* Nicht zu hoch, damit man scrollen kann */
+                /* 100% des Parent-Containers nutzen */
+                width: 100%;
+                /* Aspect Ratio beibehalten: 844/460 ≈ 1.835 */
+                aspect-ratio: 460 / 844;
                 margin: 0 auto var(--space-md);
                 border-radius: 16px;
                 overflow: hidden;
@@ -355,12 +356,11 @@
                 width: 460px;
                 height: 844px;
                 border: none;
-                /* Skalieren auf verfügbare Breite */
-                transform: scale(calc((100vw - 32px) / 460px));
-                transform-origin: top left;
                 position: absolute;
                 top: 0;
                 left: 0;
+                /* Skalierung basierend auf Wrapper-Breite */
+                transform-origin: top left;
             }
 
             .prototype-link {
@@ -374,27 +374,41 @@
             }
         }
 
-        /* Sehr kleine Screens (iPhone SE, etc.) */
+        /* Sehr kleine Screens */
         @media (max-width: 380px) {
             .wide-container {
-                padding: 0 var(--space-xs);
+                padding: 0 4px;
             }
 
             .codepen-section {
-                padding: var(--space-sm);
+                padding: var(--space-xs);
             }
 
             .embed-frame-wrapper {
-                width: calc(100vw - 24px);
-                height: calc(844px * ((100vw - 24px) / 460px));
                 border-radius: 12px;
-            }
-
-            .codepen-embed {
-                transform: scale(calc((100vw - 24px) / 460px));
             }
         }
     </style>
+    
+    <script>
+        // JavaScript für dynamische Skalierung
+        function updatePrototypeScale() {
+            const wrapper = document.querySelector('.embed-frame-wrapper');
+            const iframe = document.querySelector('.codepen-embed');
+            
+            if (!wrapper || !iframe || window.innerWidth > 640) return;
+            
+            const wrapperWidth = wrapper.offsetWidth;
+            const prototypeWidth = 460;
+            const scale = wrapperWidth / prototypeWidth;
+            
+            iframe.style.transform = `scale(${scale})`;
+        }
+        
+        // Bei Laden und Resize aufrufen
+        window.addEventListener('load', updatePrototypeScale);
+        window.addEventListener('resize', updatePrototypeScale);
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -444,7 +458,6 @@
 
         <div class="container">
             <div class="prototype-grid">
-                <!-- Weitere Prototypen können hier später hinzugefügt werden -->
             </div>
         </div>
     </main>
